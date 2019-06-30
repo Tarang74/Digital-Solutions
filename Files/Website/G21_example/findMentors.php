@@ -4,10 +4,10 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
-	$dbName = "G21_Example";
+	$dbName = "g21_example";
 	$dataString = "";
 	$getVal = "";
-	$mentorsID = array();
+	$mentorID = array();
 	
 
 	// Create connection to the database
@@ -29,12 +29,12 @@
 	if ($result_mentorAval->num_rows >0) {
 		// assign the data of each row into the array.
 		while($row = $result_mentorAval->fetch_assoc()) {
-			$mentorsID[] = $row["mentorID"];
+			$mentorID[] = $row["mentorID"];
 			$mentorsAval[] = $row["firstName"];
 		}
 	} else {
 		//if no results add this text to the array instead.
-		$mentorsID[] = "0";
+		$mentorID[] = "0";
 		$mentorsAval[]= "no mentors avaliable";
 	}
 	
@@ -44,7 +44,7 @@
 	//loop through the array to create the options of the select box
 	$arrlength = count($mentorsAval);
 	  for($x = 0; $x < $arrlength; $x++) {
-		$dataString .= " <option value='" . $mentorsID[$x] . "'>" . $mentorsAval[$x]. "</option>";
+		$dataString .= " <option value='" . $mentorID[$x] . "'>" . $mentorsAval[$x]. "</option>";
 	  }
 	//add the close tag for the select box
 	$dataString .="</select>";

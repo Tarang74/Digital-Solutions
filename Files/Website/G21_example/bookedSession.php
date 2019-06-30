@@ -12,7 +12,7 @@
 <title>G21 Example - Booked Session</title>
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="../../../Website/G21_example/css/bootstrap.css">
+<link rel="stylesheet" href="../../../G21_example/css/bootstrap.css">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,12 +23,14 @@
 </head>
 <body>
 <?php
+	include("../../../G21_example/findMentors.php");
 	/**** define variables ****/
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
-	$dbName = "G21_Example";
-	$subjectID;
+	$dbName = "g21_example";
+	$subjectID = array();
+	$teacherID = array();
 
 	// Create connection to the database
 	$conn = new mysqli($servername, $username, $password, $dbName);
@@ -58,13 +60,13 @@
 ?>
 
 <!-- include navigation bar on all pages, so you only have to update ONE file (nav.php) when changes are made -->
-<?php include("../../../Website/G21_example/nav.php"); ?>
+<?php include("../../../G21_example/nav.php"); ?>
 
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <div class="jumbotron">
-        <h1 class="text-center"><img class="img-circle" alt="140x140" style="width: 140px; height: 140px; text-align: center;" src="../../../Website/G21_example/images/G21_logo.png" data-holder-rendered="true">
+        <h1 class="text-center"><img class="img-circle" alt="140x140" style="width: 140px; height: 140px; text-align: center;" src="../../../G21_example/images/G21_logo.png" data-holder-rendered="true">
         <br>G21 example - Booked Session
         </h1>
         <p class="text-center">On the index.php page a user has booked a session and the form sent the information to this page.</p>
@@ -230,22 +232,22 @@
       </address>
       <h4>Social</h4>
       <div class="row">
-      	<div class="col-xs-2"><img class="img-circle" src="../../../Website/G21_example/images/32X32.gif" alt=""></div>
-      	<div class="col-xs-2"><img class="img-circle" src="../../../Website/G21_example/images/32X32.gif" alt=""></div>
-      	<div class="col-xs-2"><img class="img-circle" src="../../../Website/G21_example/images/32X32.gif" alt=""></div>
-      	<div class="col-xs-2"><img class="img-circle" src="../../../Website/G21_example/images/32X32.gif" alt=""></div>        
+      	<div class="col-xs-2"><img class="img-circle" src="../../../G21_example/images/32X32.gif" alt=""></div>
+      	<div class="col-xs-2"><img class="img-circle" src="../../../G21_example/images/32X32.gif" alt=""></div>
+      	<div class="col-xs-2"><img class="img-circle" src="../../../G21_example/images/32X32.gif" alt=""></div>
+      	<div class="col-xs-2"><img class="img-circle" src="../../../G21_example/images/32X32.gif" alt=""></div>        
       </div>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6">
       <h2>Testimonials</h2>
       <div class="media">
-        <div class="media-left"> <a href="#"> <img class="media-object" src="../../../Website/G21_example/images/35X35.gif" alt="..."> </a> </div>
+        <div class="media-left"> <a href="#"> <img class="media-object" src="../../../G21_example/images/35X35.gif" alt="..."> </a> </div>
         <div class="media-body">
           <h4 class="media-heading">Media heading</h4>
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. </div>
       </div>
       <div class="media">
-        <div class="media-left"> <a href="#"> <img class="media-object" src="../../../Website/G21_example/images/35X35.gif" alt="..."> </a> </div>
+        <div class="media-left"> <a href="#"> <img class="media-object" src="../../../G21_example/images/35X35.gif" alt="..."> </a> </div>
         <div class="media-body">
           <h4 class="media-heading">Media heading</h4>
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. </div>
@@ -269,9 +271,9 @@
   </div>
 </footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="../../../Website/G21_example/js/jquery-1.11.3.min.js"></script> 
+<script src="../../../G21_example/js/jquery-1.11.3.min.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="../../../Website/G21_example/js/bootstrap.js"></script>
+<script src="../../../G21_example/js/bootstrap.js"></script>
 
 
 <?php 

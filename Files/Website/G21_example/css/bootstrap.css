@@ -268,8 +268,8 @@ th {
 @font-face {
   font-family: 'Glyphicons Halflings';
 
-  src: url('../../../../Website/G21_example/fonts/glyphicons-halflings-regular.eot');
-  src: url('../../../../Website/G21_example/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../../../Website/G21_example/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../../../../Website/G21_example/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../../../../Website/G21_example/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../../../../Website/G21_example/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../../../../G21_example/fonts/glyphicons-halflings-regular.eot');
+  src: url('../../../../G21_example/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../../../G21_example/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../../../../G21_example/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../../../../G21_example/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../../../../G21_example/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;

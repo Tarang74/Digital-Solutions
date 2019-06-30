@@ -12,7 +12,7 @@
 <title>G21 Example Website</title>
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="../../../Website/G21_example/css/bootstrap.css">
+<link rel="stylesheet" href="../../../G21_example/css/bootstrap.css">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,10 +47,10 @@
 ?>
 
 <!-- include navigation bar on all pages, so you only have to update ONE file (nav.php) when changes are made -->
-<?php include("../../../Website/G21_example/nav.php"); ?>
+<?php include("../../../G21_example/nav.php"); ?>
 	<form action="login.php">
 	<div class="imgcontainer">
-    <img src="../../../Website/G21_example/img_avatar2.png" alt="Avatar" class="avatar">
+    <img src="../../../G21_example/img_avatar2.png" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
