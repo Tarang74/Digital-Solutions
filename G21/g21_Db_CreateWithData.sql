@@ -38,7 +38,7 @@ VALUES (1, 1, 'This was a great session, thank you Jill I learnt a lot.');
 
 -- ------------------------------------------------
 
--- Table structure for table `houseTable`
+-- Table structure for table `HouseTable`
 CREATE TABLE `HouseTable` (
     `houseID` int(11) NOT NULL,
     `houseName` varchar(100) COLLATE utf8_bin NOT NULL
@@ -173,104 +173,133 @@ VALUES (1, 'Bryde', 'Dodd', 'bryded@citipointe.qld.edu.au');
 -- ------------------------------------------------
 
 -- Indexes for table `FeedbackTable`
-ALTER TABLE `FeedbackTable` ADD PRIMARY KEY (`feedbackID`), ADD KEY `sessionID` (`sessionID`);
+ALTER TABLE `FeedbackTable`
+    ADD PRIMARY KEY (`feedbackID`),
+    ADD KEY `sessionID` (`sessionID`);
 
--- Indexes for table `houseTable`
-ALTER TABLE `houseTable` ADD PRIMARY KEY (`houseID`);
+-- Indexes for table `HouseTable`
+ALTER TABLE `HouseTable`
+    ADD PRIMARY KEY (`houseID`);
 
 -- Indexes for table `MenteeSubjectTable`
-ALTER TABLE `MenteeSubjectTable` ADD KEY `menteeID` (`menteeID`), ADD KEY `subjectID` (`subjectID`);
+ALTER TABLE `MenteeSubjectTable`
+    ADD KEY `menteeID` (`menteeID`),
+    ADD KEY `subjectID` (`subjectID`);
 
 -- Indexes for table `MenteeTable`
+ALTER TABLE `MenteeTable`
+    ADD PRIMARY KEY (`menteeID`),
+    ADD KEY `houseID` (`houseID`);
 
-ALTER TABLE `MenteeTable` ADD PRIMARY KEY (`menteeID`), ADD KEY `houseID` (`houseID`);
---
 -- Indexes for table `MentorSubjectTable`
---
-ALTER TABLE `MentorSubjectTable` ADD KEY `subjectID` (`subjectID`), ADD KEY `MentorSubjectTable_ibfk_1` (`mentorID`);
---
+ALTER TABLE `MentorSubjectTable`
+    ADD KEY `subjectID` (`subjectID`),
+    ADD KEY `MentorSubjectTable_ibfk_1` (`mentorID`);
+
 -- Indexes for table `MentorTable`
---
-ALTER TABLE `MentorTable` ADD PRIMARY KEY (`mentorID`), ADD KEY `houseID` (`houseID`);
---
+ALTER TABLE `MentorTable`
+    ADD PRIMARY KEY (`mentorID`),
+    ADD KEY `houseID` (`houseID`);
+
 -- Indexes for table `SessionsTable`
---
-ALTER TABLE `SessionsTable` ADD PRIMARY KEY (`sessionID`), ADD KEY `menteeID` (`menteeID`), ADD KEY `mentorID` (`mentorID`), ADD KEY `subjectID` (`subjectID`), ADD KEY `teacherID` (`teacherID`);
---
--- Indexes for table `subjectTable`
---
-ALTER TABLE `subjectTable` ADD PRIMARY KEY (`subjectID`);
---
+ALTER TABLE `SessionsTable`
+    ADD PRIMARY KEY (`sessionID`),
+    ADD KEY `subjectID` (`subjectID`),
+    ADD KEY `menteeID` (`menteeID`),
+    ADD KEY `mentorID` (`mentorID`),
+    ADD KEY `teacherID` (`teacherID`);
+
+-- Indexes for table `SubjectTable`
+ALTER TABLE `subjectTable`
+    ADD PRIMARY KEY (`subjectID`);
+
 -- Indexes for table `TeacherSubjectTable`
---
-ALTER TABLE `TeacherSubjectTable` ADD KEY `teacherID` (`teacherID`), ADD KEY `mentorID` (`mentorID`), ADD KEY `subjectID` (`subjectID`);
---
+ALTER TABLE `TeacherSubjectTable`
+    ADD KEY `teacherID` (`teacherID`),
+    ADD KEY `subjectID` (`subjectID`);
+    ADD KEY `mentorID` (`mentorID`),
+
 -- Indexes for table `TeacherTable`
---
-ALTER TABLE `TeacherTable` ADD PRIMARY KEY (`teacherID`);
---
+ALTER TABLE `TeacherTable`
+    ADD PRIMARY KEY (`teacherID`);
+
+-- ------------------------------------------------
+
 -- AUTO_INCREMENT for dumped tables
---
---
+
+-- ------------------------------------------------
+
 -- AUTO_INCREMENT for table `FeedbackTable`
---
-ALTER TABLE `FeedbackTable` MODIFY `feedbackID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
---
--- AUTO_INCREMENT for table `houseTable`
---
-ALTER TABLE `houseTable` MODIFY `houseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 5;
---
+ALTER TABLE `FeedbackTable`
+    MODIFY `feedbackID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
+-- AUTO_INCREMENT for table `HouseTable`
+ALTER TABLE `HouseTable`
+    MODIFY `houseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 5;
+    
 -- AUTO_INCREMENT for table `MenteeTable`
---
-ALTER TABLE `MenteeTable` MODIFY `menteeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
---
+ALTER TABLE `MenteeTable`
+    MODIFY `menteeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
 -- AUTO_INCREMENT for table `MentorTable`
---
-ALTER TABLE `MentorTable` MODIFY `mentorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
---
+ALTER TABLE `MentorTable`
+    MODIFY `mentorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
 -- AUTO_INCREMENT for table `SessionsTable`
---
-ALTER TABLE `SessionsTable` MODIFY `sessionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
---
--- AUTO_INCREMENT for table `subjectTable`
---
-ALTER TABLE `subjectTable` MODIFY `subjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
---
+ALTER TABLE `SessionsTable`
+    MODIFY `sessionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
+-- AUTO_INCREMENT for table `SubjectTable`
+ALTER TABLE `SubjectTable`
+    MODIFY `subjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
 -- AUTO_INCREMENT for table `TeacherTable`
---
-ALTER TABLE `TeacherTable` MODIFY `teacherID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
---
+ALTER TABLE `TeacherTable`
+    MODIFY `teacherID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
+-- ------------------------------------------------
+
 -- Constraints for dumped tables
---
---
+
+-- ------------------------------------------------
+
 -- Constraints for table `FeedbackTable`
---
-ALTER TABLE `FeedbackTable` ADD CONSTRAINT `FeedbackTable_ibfk_1` FOREIGN KEY (`sessionID`) REFERENCES `SessionsTable` (`sessionID`);
---
+ALTER TABLE `FeedbackTable`
+    ADD CONSTRAINT `FeedbackTable_ibfk_1` FOREIGN KEY (`sessionID`) REFERENCES `SessionsTable` (`sessionID`);
+
 -- Constraints for table `MenteeSubjectTable`
---
-ALTER TABLE `MenteeSubjectTable` ADD CONSTRAINT `MenteeSubjectTable_ibfk_1` FOREIGN KEY (`menteeID`) REFERENCES `MenteeTable` (`menteeID`), ADD CONSTRAINT `MenteeSubjectTable_ibfk_2` FOREIGN KEY (`subjectID`) REFERENCES `subjectTable` (`subjectID`);
---
+ALTER TABLE `MenteeSubjectTable`
+    ADD CONSTRAINT `MenteeSubjectTable_ibfk_1` FOREIGN KEY (`menteeID`) REFERENCES `MenteeTable` (`menteeID`),
+    ADD CONSTRAINT `MenteeSubjectTable_ibfk_2` FOREIGN KEY (`subjectID`) REFERENCES `SubjectTable` (`subjectID`);
+
 -- Constraints for table `MenteeTable`
---
-ALTER TABLE `MenteeTable` ADD CONSTRAINT `MenteeTable_ibfk_1` FOREIGN KEY (`houseID`) REFERENCES `houseTable` (`houseID`);
---
+ALTER TABLE `MenteeTable`
+    ADD CONSTRAINT `MenteeTable_ibfk_1` FOREIGN KEY (`houseID`) REFERENCES `HouseTable` (`houseID`);
+
 -- Constraints for table `MentorSubjectTable`
---
-ALTER TABLE `MentorSubjectTable` ADD CONSTRAINT `MentorSubjectTable_ibfk_1` FOREIGN KEY (`mentorID`) REFERENCES `MentorTable` (`mentorID`), ADD CONSTRAINT `MentorSubjectTable_ibfk_2` FOREIGN KEY (`subjectID`) REFERENCES `subjectTable` (`subjectID`);
---
+ALTER TABLE `MentorSubjectTable`
+    ADD CONSTRAINT `MentorSubjectTable_ibfk_1` FOREIGN KEY (`mentorID`) REFERENCES `MentorTable` (`mentorID`),
+    ADD CONSTRAINT `MentorSubjectTable_ibfk_2` FOREIGN KEY (`subjectID`) REFERENCES `SubjectTable` (`subjectID`);
+
 -- Constraints for table `MentorTable`
---
-ALTER TABLE `MentorTable` ADD CONSTRAINT `MentorTable_ibfk_1` FOREIGN KEY (`houseID`) REFERENCES `houseTable` (`houseID`);
---
+ALTER TABLE `MentorTable`
+    ADD CONSTRAINT `MentorTable_ibfk_1` FOREIGN KEY (`houseID`) REFERENCES `HouseTable` (`houseID`);
+
 -- Constraints for table `SessionsTable`
---
-ALTER TABLE `SessionsTable` ADD CONSTRAINT `SessionsTable_ibfk_1` FOREIGN KEY (`menteeID`) REFERENCES `MenteeTable` (`menteeID`), ADD CONSTRAINT `SessionsTable_ibfk_2` FOREIGN KEY (`mentorID`) REFERENCES `MentorTable` (`mentorID`), ADD CONSTRAINT `SessionsTable_ibfk_3` FOREIGN KEY (`subjectID`) REFERENCES `subjectTable` (`subjectID`), ADD CONSTRAINT `SessionsTable_ibfk_4` FOREIGN KEY (`teacherID`) REFERENCES `TeacherTable` (`teacherID`);
---
+ALTER TABLE `SessionsTable`
+    ADD CONSTRAINT `SessionsTable_ibfk_1` FOREIGN KEY (`menteeID`) REFERENCES `MenteeTable` (`menteeID`),
+    ADD CONSTRAINT `SessionsTable_ibfk_2` FOREIGN KEY (`mentorID`) REFERENCES `MentorTable` (`mentorID`),
+    ADD CONSTRAINT `SessionsTable_ibfk_3` FOREIGN KEY (`subjectID`) REFERENCES `SubjectTable` (`subjectID`),
+    ADD CONSTRAINT `SessionsTable_ibfk_4` FOREIGN KEY (`teacherID`) REFERENCES `TeacherTable` (`teacherID`);
+
 -- Constraints for table `TeacherSubjectTable`
---
-ALTER TABLE `TeacherSubjectTable` ADD CONSTRAINT `TeacherSubjectTable_ibfk_1` FOREIGN KEY (`teacherID`) REFERENCES `TeacherTable` (`teacherID`), ADD CONSTRAINT `TeacherSubjectTable_ibfk_2` FOREIGN KEY (`mentorID`) REFERENCES `MentorTable` (`mentorID`), ADD CONSTRAINT `TeacherSubjectTable_ibfk_3` FOREIGN KEY (`subjectID`) REFERENCES `subjectTable` (`subjectID`);
+ALTER TABLE `TeacherSubjectTable`
+    ADD CONSTRAINT `TeacherSubjectTable_ibfk_1` FOREIGN KEY (`teacherID`) REFERENCES `TeacherTable` (`teacherID`),
+    ADD CONSTRAINT `TeacherSubjectTable_ibfk_2` FOREIGN KEY (`mentorID`) REFERENCES `MentorTable` (`mentorID`),
+    ADD CONSTRAINT `TeacherSubjectTable_ibfk_3` FOREIGN KEY (`subjectID`) REFERENCES `SubjectTable` (`subjectID`);
+
 COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
 ;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */
