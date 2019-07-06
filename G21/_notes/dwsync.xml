@@ -4,12 +4,10 @@
 <file name="nav.php" server="lampp/htdocs/g21example/" local="3642444283" remote="3642444283" Dst="-1" />
 <file name="findMentors.php" server="lampp/htdocs/g21example/" local="3642800484" remote="3642800484" Dst="-1" />
 <file name="bookedSession.php" server="lampp/htdocs/g21example/" local="3642800447" remote="3642800447" Dst="-1" />
-<file name="g21_Db_CreateWithData.sql" server="lampp/htdocs/g21example/" local="3640819028" remote="3640819028" Dst="-1" />
 <file name="nav.php" server="U:/XAMPP/htdocs/G21_example/" local="132040730840000000" remote="132040730840000000" Dst="0" />
 <file name="bookedSession.php" server="U:/XAMPP/htdocs/G21_example/" local="132061601068640674" remote="132061601060000000" Dst="0" />
 <file name="index.php" server="U:/XAMPP/htdocs/G21_example/" local="132061597381042751" remote="132061597380000000" Dst="0" />
 <file name="findMentors.php" server="U:/XAMPP/htdocs/G21_example/" local="132061602365014841" remote="132061602360000000" Dst="0" />
-<file name="g21_Db_CreateWithData.sql" server="U:/XAMPP/htdocs/G21_example/" local="132024478280000000" remote="132024478280000000" Dst="0" />
 <file name="login.php" server="U:/XAMPP/htdocs/G21_example/" local="132060813270825006" remote="132060813270000000" Dst="0" />
 <file name="bookedSession_1.php" server="U:/XAMPP/htdocs/G21_example/" local="132061598319003087" remote="132061598310000000" Dst="0" />
 <file name="findMentors_1.php" server="U:/XAMPP/htdocs/G21_example/" local="132061597834421130" remote="132061597830000000" Dst="0" />
@@ -17,7 +15,6 @@
 <file name="bookedSession_1.php" server="U:/XAMPP/htdocs/G21/" local="132061598319003087" remote="132061598310000000" Dst="0" />
 <file name="findMentors.php" server="U:/XAMPP/htdocs/G21/" local="132061602365014841" remote="132061602360000000" Dst="0" />
 <file name="findMentors_1.php" server="U:/XAMPP/htdocs/G21/" local="132061597834421130" remote="132061597830000000" Dst="0" />
-<file name="g21_Db_CreateWithData.sql" server="U:/XAMPP/htdocs/G21/" local="132024478280000000" remote="132024478280000000" Dst="0" />
 <file name="index.php" server="U:/XAMPP/htdocs/G21/" local="132061614042731615" remote="132061614040000000" Dst="0" />
 <file name="index_1.php" server="U:/XAMPP/htdocs/G21/" local="132061597381042751" remote="132061597380000000" Dst="0" />
 <file name="login.php" server="U:/XAMPP/htdocs/G21/" local="132060813270825006" remote="132060813270000000" Dst="0" />
@@ -27,10 +24,16 @@
 <file name="bookedSession_1.php" server="F:/xampp/htdocs/G21/" local="132063472821575294" remote="132063472820000000" Dst="0" />
 <file name="findMentors.php" server="F:/xampp/htdocs/G21/" local="132063472152909494" remote="132063472150000000" Dst="0" />
 <file name="findMentors_1.php" server="F:/xampp/htdocs/G21/" local="132063472153009432" remote="132063472150000000" Dst="0" />
-<file name="g21_Db_CreateWithData.sql" server="F:/xampp/htdocs/G21/" local="132063472153948850" remote="132063472150000000" Dst="0" />
 <file name="index.php" server="F:/xampp/htdocs/G21/" local="132063472823204287" remote="132063472820000000" Dst="0" />
 <file name="index_1.php" server="F:/xampp/htdocs/G21/" local="132063472826792071" remote="132063472820000000" Dst="0" />
 <file name="login.php" server="F:/xampp/htdocs/G21/" local="132063472830779593" remote="132063472830000000" Dst="0" />
 <file name="nav.php" server="F:/xampp/htdocs/G21/" local="132063472831619095" remote="132063472830000000" Dst="0" />
-<file name="g21_Db_CreateWithData.sql" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132068633286718057" remote="132068633280000000" Dst="0" />
+<file name="bookedSession.php" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132063472817617747" remote="132063472810000000" Dst="0" />
+<file name="bookedSession_1.php" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132063472821575294" remote="132063472820000000" Dst="0" />
+<file name="findMentors.php" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132063472152909494" remote="132063472150000000" Dst="0" />
+<file name="findMentors_1.php" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132063472153009432" remote="132063472150000000" Dst="0" />
+<file name="index.php" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132063483504847523" remote="132063483500000000" Dst="0" />
+<file name="index_1.php" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132063472826792071" remote="132063472820000000" Dst="0" />
+<file name="login.php" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132063472830779593" remote="132063472830000000" Dst="0" />
+<file name="nav.php" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132063472831619095" remote="132063472830000000" Dst="0" />
 </dwsync>
