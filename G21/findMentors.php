@@ -4,7 +4,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
-	$dbName = "g21_example";
+	$dbName = "G21";
 	$dataString = "";
 	$getVal = "";
 	$mentorID = array();

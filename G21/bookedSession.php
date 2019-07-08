@@ -1,7 +1,4 @@
-<?php
-	// Start the session ** must be before html tags **
-	session_start();
-?>
+<?php include('session.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- make sure you change the title to match your page -->
-<title>G21 Example - Booked Session</title>
+<title>Booked Sessions</title>
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="../Website/G21/css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.css">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,12 +20,8 @@
 </head>
 <body>
 <?php
-	include("../Website/G21/findMentors.php");
-	/**** define variables ****/
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbName = "g21_example";
+	include("findMentors.php");
+	
 	$subjectID = array();
 	$teacherID = array();
 
@@ -60,13 +53,13 @@
 ?>
 
 <!-- include navigation bar on all pages, so you only have to update ONE file (nav.php) when changes are made -->
-<?php include("../Website/G21/nav.php"); ?>
+<?php include("nav.php"); ?>
 
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <div class="jumbotron">
-        <h1 class="text-center"><img class="img-circle" alt="140x140" style="width: 140px; height: 140px; text-align: center;" src="../Website/G21/images/G21_logo.png" data-holder-rendered="true">
+        <h1 class="text-center"><img class="img-circle" alt="140x140" style="width: 140px; height: 140px; text-align: center;" src="images/G21_logo.png" data-holder-rendered="true">
         <br>G21 example - Booked Session
         </h1>
         <p class="text-center">On the index.php page a user has booked a session and the form sent the information to this page.</p>
@@ -170,7 +163,7 @@
       <p>Look in the code below to see example php and sql for inserting data:
 	  	<?php
 	  		/* // insert data example 
-			$sql = "INSERT INTO MenteeTable (firstName, lastName, email, gender, yrLevel, houseID)
+			$sql = "INSERT INTO MenteeTable (firstName, lastName, email, gender, yearLevel, houseID)
 					VALUES ('John', 'Smith', 'john@example.com', 'M', '9', '2')";
 
 			if ($conn->query($sql) === TRUE) {
@@ -232,22 +225,22 @@
       </address>
       <h4>Social</h4>
       <div class="row">
-      	<div class="col-xs-2"><img class="img-circle" src="../Website/G21/images/32X32.gif" alt=""></div>
-      	<div class="col-xs-2"><img class="img-circle" src="../Website/G21/images/32X32.gif" alt=""></div>
-      	<div class="col-xs-2"><img class="img-circle" src="../Website/G21/images/32X32.gif" alt=""></div>
-      	<div class="col-xs-2"><img class="img-circle" src="../Website/G21/images/32X32.gif" alt=""></div>        
+      	<div class="col-xs-2"><img class="img-circle" src="images/32X32.gif" alt=""></div>
+      	<div class="col-xs-2"><img class="img-circle" src="images/32X32.gif" alt=""></div>
+      	<div class="col-xs-2"><img class="img-circle" src="images/32X32.gif" alt=""></div>
+      	<div class="col-xs-2"><img class="img-circle" src="images/32X32.gif" alt=""></div>        
       </div>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6">
       <h2>Testimonials</h2>
       <div class="media">
-        <div class="media-left"> <a href="#"> <img class="media-object" src="../Website/G21/images/35X35.gif" alt="..."> </a> </div>
+        <div class="media-left"> <a href="#"> <img class="media-object" src="images/35X35.gif" alt="..."> </a> </div>
         <div class="media-body">
           <h4 class="media-heading">Media heading</h4>
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. </div>
       </div>
       <div class="media">
-        <div class="media-left"> <a href="#"> <img class="media-object" src="../Website/G21/images/35X35.gif" alt="..."> </a> </div>
+        <div class="media-left"> <a href="#"> <img class="media-object" src="images/35X35.gif" alt="..."> </a> </div>
         <div class="media-body">
           <h4 class="media-heading">Media heading</h4>
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. </div>
@@ -271,9 +264,9 @@
   </div>
 </footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="../Website/G21/js/jquery-1.11.3.min.js"></script> 
+<script src="js/jquery-1.11.3.min.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="../Website/G21/js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 
 
 <?php 

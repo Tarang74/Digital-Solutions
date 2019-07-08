@@ -1,281 +1,460 @@
-<?php
-	// Start the session ** must be before html tags **
-	session_start();
-?>
+<?php include('session.php'); ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 	<title>G21</title>
-	<link href="../Website/G21/css/style.css" rel="stylesheet" type="text/css">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body style="background-color:rgba(53,53,53,1.00); background-image: linear-gradient(130deg, rgba(120,170,150,1.00), rgba(40,44,55,1.00));">
-	<div class="about" onclick="location.href='#footer';">
-		<a>About</a>
-	</div>
-	<div class="logoContainer">
-		<a href="../Website/G21/index.html"><img alt="logo" class="logo" src="../Website/G21/images/citipointe logo.png"></a>
-	</div>
-	<header class="header">
-		<div class="headernav">
-			<section class="headerleft">
-				<ul>
-					<li>
-						<a href="../Website/G21/menu.html">Menu</a>
-					</li>
-					<li>
-						<a href="../Website/G21/location.html">Location</a>
-					</li>
-				</ul>
-			</section>
-			<section class="headercenter"></section>
-			<section class="headerright">
-				<ul>
-					<li>
-						<a href="../Website/G21/gallery.html">Gallery</a>
-					</li>
-					<li>
-						<a href="../Website/G21/review.php">Review</a>
-					</li>
-				</ul>
-			</section>
-		</div>
-	</header>
+
+<body>
+    
 	<?php
-	/**** define variables ****/
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbName = "G21_example";
-
-	// Create connection to the database
-	$conn = new mysqli($servername, $username, $password, $dbName);
-
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	} 
-	
-	/*if using login use a session variable to store the users role and id
-	NOTE: you must start the session at the start of the file and assign the login details to the session variables. You must destroy the session when the user logs out.
-	*/
-	// Set session variables
-	$_SESSION["userID"] = "1";
-	$_SESSION["role"] = "mentee";
-	
-?>
-	 
-	
-	
-	
-	
-	<script src="../Website/G21/js/header.js" type="text/javascript">
-	</script>
-	<main id="content" style="padding: 10vh 5vw 0 5vw">
-		<section class="review">
-			<?php
-			        $reviewName = $reviewEmail = $reviewGender = $reviewComment = $reviewRating = "";
-			    
-			        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			            $reviewName = test_input($_POST["reviewName"]);
-			            $reviewEmail = test_input($_POST["reviewEmail"]);
-			            $reviewComment = test_input($_POST["reviewComment"]);
-			            $reviewGender = test_input($_POST["reviewGender"]);
-			            $reviewRating = test_input($_POST["reviewRating"]);
-			        }
-
-			        function test_input($data) {
-			            $data = trim($data);
-			            $data = stripslashes($data);
-			            $data = htmlspecialchars($data);
-			            return $data;
-			        }
-			    ?>
-			<h2>Tell us what you think:</h2>
-			<form action="../Website/G21/review.php" id="userReviewForm" method="post" name="userReviewForm">
-				<table>
-					<tr>
-						<td>Name:</td>
-						<td><input id="name" name="reviewName" type="text"></td>
-					</tr>
-					<tr>
-						<td>Email:</td>
-						<td><input id="email" name="reviewEmail" type="email"></td>
-					</tr>
-					<tr>
-						<td>Gender:</td>
-						<td><label><input id="Male" name="reviewGender" type="radio" value="Male"> Male</label> <label><input id="Female" name="reviewGender" type="radio" value="Female"> Female</label></td>
-					</tr>
-					<tr>
-						<td>Comment:</td>
-						<td>
-						<textarea id="comment" name="reviewComment" placeholder="Enter your comment here." required=""></textarea></td>
-					</tr>
-					<tr>
-						<td>Rating:</td>
-						<td>
-							<div class="rate">
-								<input id="star5" name="reviewRating" type="radio" value="5"><label for="star5" title="5">5 stars</label>
-                                <input id="star4" name="reviewRating" type="radio" value="4"><label for="star4" title="4">4 stars</label>
-                                <input id="star3" name="reviewRating" type="radio" value="3"><label for="star3" title="3">3 stars</label>
-                                <input id="star2" name="reviewRating" type="radio" value="2"><label for="star2" title="2">2 stars</label>
-                                <input id="star1" name="reviewRating" type="radio" value="1"><label for="star1" title="1">1 star</label>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td><input type="submit"></td>
-						<td><input type="reset"></td>
-					</tr>
-				</table>
-			</form>
-            
-			<h1 style="text-transform: capitalize">Thank You <?php 
-			                echo $reviewName; 
-			            ?></h1>Email: <?php 
-			                echo $reviewEmail; 
-			            ?><br>
-			Comment: <?php 
-			                echo $reviewComment; 
-			            ?><br>
-			Rating: <?php
-			                echo $reviewRating;
-			            ?> <?php
-			            $commentsFile = fopen("comments.txt", "a") or die("Unable to open file");
-			            $publicCommentsFile = fopen("publicComments.txt", "a") or die("Unable to open file");
-			            if ($reviewName == null) {
-			                
-			            } else {
-			                
-			                $commentText = 
-			                "Name: " . $reviewName . "\r\n" . 
-			                "Email: " . $reviewEmail . "\r\n" . 
-			                "Gender: " . $reviewGender . "\r\n" . 
-			                "Comment: " . $reviewComment . "\r\n" .
-			                "Rating: " . $reviewRating . "\r\n" . "\r\n";
-                            
-                            $publicCommentsText =
-                            "Name: " . $reviewName . "\r\n" .
-                            "Rating: " . $reviewRating . "\r\n" .
-			                "Comment: " . $reviewComment . "\r\n" . "\r\n";
-                            
-			            fwrite($commentsFile, $commentText);
-			            fclose($commentsFile);
-			            
-                        fwrite($publicCommentsFile, $publicCommentsText);
-                        fclose($publicCommentsFile);
-                        
-                        
-			            $numCommentsFile = fopen("numComments.txt", "r") or die("Unable to open file");
-			            $totalNumComments = intval(fgets($numCommentsFile));
-			                
-			            $totalStarsFile = fopen("totalStars.txt", "r") or die("Unable to open file");
-			            $totalStars = intval(fgets($totalStarsFile));
-			                
-			            $totalNumComments = $totalNumComments + 1;
-			            fclose($numCommentsFile);
-			            
-			            $totalStars = $totalStars + $reviewRating;
-			            fclose($totalStarsFile);
-			            
-			            $numCommentsFile = fopen("numComments.txt", "w") or die("Unable to open file");
-			            $totalStarsFile = fopen("totalStars.txt", "w") or die("Unable to open file");
-			            $averageStarsFile = fopen("averageStars.txt", "w") or die("Unable to open file");
-			            
-			            $averageStars = $totalStars / $totalNumComments;
-			                
-			            fwrite($totalStarsFile, $totalStars);
-			            fwrite($averageStarsFile, $averageStars);
-			            fwrite($numCommentsFile, $totalNumComments);
-			            fclose($totalStarsFile);
-			            fclose($averageStarsFile);
-			            fclose($numCommentsFile);
-			            }
-
-			        ?>
-			<h1>Previous Reviews</h1>
-			<p>NUMBER OF REVIEWERS: <?php
-			            $numCommentsFile = fopen("numComments.txt", "r") or die("Unable to open file");
-			            $totalNumComments = intval(fgets($numCommentsFile));
-			            
-			            echo $totalNumComments;
-			            fclose($numCommentsFile);
-			        ?></p>
-			<p>AVERAGE RATING: <?php
-			            $averageStarsFile = fopen("averageStars.txt", "r") or die("Unable to open file");
-			            $averageStars = floor(floatval(fgets($averageStarsFile)) * 2) / 2;
-			            
-			            echo $averageStars;
-			            fclose($averageStarsFile);
-			        ?></p><?php
-			            if($totalNumComments > 1) {
-			               if ($fh = fopen("publicComments.txt", "r")) {
-			                    while (!feof($fh)) {
-			                        $line = fgets($fh);
-			                        echo $line . "<br>";
-			                    }
-			                    fclose($fh);
-			                } else {
-			                    echo "Unable to open file";
-			                }               
-			            }
-			        ?>
-		</section>
-	</main>
-	<footer id="footer">
-		<div class="footer">
-			<section>
-				<ul>
-					<li>
-						<a class="heading">Location</a>
-					</li>
-					<li>
-						<a>96 Gaynesford St, Mount Gravatt QLD 4122</a>
-					</li>
-					<li>
-						<a class="heading">Phone</a>
-					</li>
-					<li>
-						<a>0478 509 090</a>
-					</li>
-				</ul>
-			</section>
-			<section>
-				<ul>
-					<li>
-						<a class="heading">Sitemap</a>
-					</li>
-					<li>
-						<a href="../Website/G21/menu.html">Menu</a>
-					</li>
-					<li>
-						<a href="../Website/G21/location.html">Location</a>
-					</li>
-					<li>
-						<a href="../Website/G21/gallery.html">Gallery</a>
-					</li>
-					<li>
-						<a href="../Website/G21/review.php">Review</a>
-					</li>
-				</ul>
-			</section>
-			<section>
-				<ul>
-					<li>
-						<a class="heading">Social</a>
-					</li>
-					<li>
-						<a href="https://www.facebook.com/kithnchow"><i class="fa socialfb">&#xf09a;</i></a>
-					</li>
-					<li>
-						<a href="https://www.instagram.com/kithnchow/"><i class="fa socialin">&#xf16d;</i></a>
-					</li>
-				</ul>
-			</section>
+	    $_SESSION["userID"] = "1";
+	    $_SESSION["role"] = "mentee";
+	?>
+    
+	<?php include("nav.php"); ?>
+    
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="jumbotron">
+					<h1 class="text-center">
+                        <img alt="140x140" class="img-circle" data-holder-rendered="true" src="images/G21_logo.png" style="width: 140px; height: 140px; text-align: center;"><br>
+					    G21 example code
+                    </h1>
+				</div>
+			</div>
 		</div>
-	</footer>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="text-center col-sm-6">
+				<h3>Mentee Select Table Data Example</h3>
+				<p><?php
+ 
+				        $sql = "SELECT * FROM MenteeTable";
+				        //result is a variable array that stores the results of the query.
+				        //$connection is the database variable set at the start
+				        //query() sends the sql query to the database.
+				        $result = $connection->query($sql);
+				        
+				        //if there are results it loops through them outputing them to the screen, if not it outputs 0 results.
+				        if ($result->num_rows > 0) {
+				            //output data of each row of the query results. 
+				            //join strings and variables with a .
+				            while($row = $result->fetch_assoc()) {
+				                echo "Mentee id: " . $row["menteeID"]. "<br> Name: " . $row["firstName"]. " " . $row["lastName"]. "<br> Email: " . $row["email"] . "<br> Year: " . $row["yearLevel"] . "<br> House: " . $row["houseID"] . "<br><br>";
+				            }
+				        } else {
+				            echo "0 results";
+				        }
+				      ?></p><a class="btn btn-danger btn-lg" href="#" role="button">Mentee</a>
+			</div>
+			<div class="text-center col-sm-6">
+				<h3>Mentor Select Table Data Example</h3>
+				<p><?php
+				            /* // select all of the data from MentorTable using mySQLi procedural example */
+				            $sql = "SELECT * FROM mentortable";
+				            //mysqli_query requires (database, query);
+				            $result = mysqli_query($connection, $sql);
+
+				            if (mysqli_num_rows($result) > 0) {
+				                // output data of each row
+				                while($row = mysqli_fetch_assoc($result)) {
+				                    echo "Mentor id: " . $row["mentorID"]. "<br> Name: " . $row["firstName"]. " " . $row["lastName"]. "<br> Email: " . $row["email"] . "<br> Year: " . $row["yearLevel"] . "<br> House: " . $row["houseID"] . "<br><br>";
+				                }
+				            } else {
+				                echo "0 results";
+				            }
+				          ?></p><a class="btn btn-info btn-lg" href="#" role="button">Mentor</a>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<h2><span class="glyphicon glyphicon-music" aria-hidden="true"></span> Insert Data</h2>
+				<p>Look in the code below to see example php and sql for inserting data: <?php
+				            /* // insert data example 
+				            $sql = "INSERT INTO MenteeTable (firstName, lastName, email, gender, yearLevel, houseID)
+				                    VALUES ('John', 'Smith', 'john@example.com', 'M', '9', '2')";
+
+				            if ($connection->query($sql) === TRUE) {
+				                echo "New record created successfully";
+				            } else {
+				                echo "Error: " . $sql . "<br>" . $connection->error;
+				            }*/
+
+				        ?></p>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update Data</h2>
+				<p>Look in the code below to see example php and sql for udating data: <?php
+				            /* // sql to update a record 
+				            $sql = "UPDATE MenteeTable SET lastName='Doe' WHERE menteeID=2";
+
+				            if ($connection->query($sql) === TRUE) {
+				                echo "Record updated successfully";
+				            } else {
+				                echo "Error updating record: " . $connection->error;
+				            }*/
+				        ?></p>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<h2><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Delete Data</h2>
+				<p>Look in the code below to see example php and sql for deleting data: <?php
+				            /* // sql to delete a record
+				            $sql = "DELETE FROM MenteeTable WHERE menteeID=2";
+
+				            if ($connection->query($sql) === TRUE) {
+				                echo "Record deleted successfully";
+				            } else {
+				                echo "Error deleting record: " . $connection->error;
+				            }*/
+				        ?></p>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<h2><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Learn more about PHP and SQL</h2>
+				<p>To learn more about PHP and SQL go to <a href="https://www.w3schools.com/php/php_mysql_select.asp">w3Schools</a>.</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<h1>How to link HTML forms to a database:</h1>
+			<hr>
+			<div class="col-lg-3 col-sm-6">
+				<div class="panel panel-default panel-success">
+					<!-- Use session userID to prefill some information -->
+					<?php
+						//set the variables you want to use later here
+						$menteeFirstName = "";
+						$menteeHouse = "";
+						$menteeSubjects = array();
+						$mentorAval = array();
+						$mentorID = array();
+						$subjectID = array();
+
+						//select Name and house based on their ID = $_SESSION['userID']
+						$sql_menteeDetails = "SELECT * FROM MenteeTable INNER JOIN houseTable ON MenteeTable.houseID = houseTable.houseID WHERE menteeID = " . $_SESSION['userID'];
+						$result_menteeDetails = $connection->query($sql_menteeDetails);
+
+						if ($result_menteeDetails->num_rows == 1) {
+							// output data of each row (will only be one result)
+							while($row = $result_menteeDetails->fetch_assoc()) {
+								//assign result valules to the varibles created earlier.
+								$menteeFirstName = $row["firstName"];
+								$menteeHouse = $row["houseName"];
+							}
+						} else {
+							echo "0 results";
+						}
+
+						// get all the mentee's subjects for them to select the one they wish to have a session for.
+						$sql_menteeSubjects = "SELECT subjectTable.subjectID, subjectName FROM MenteeSubjectTable INNER JOIN subjectTable ON MenteeSubjectTable.subjectID = subjectTable.subjectID WHERE menteeID = " . $_SESSION['userID'];
+						$result_menteeSubjects = $connection->query($sql_menteeSubjects);
+
+						if ($result_menteeSubjects->num_rows >0) {
+							// output data of each row
+							while($row = $result_menteeSubjects->fetch_assoc()) {
+								//as there will most likely be more than on result assign to an array variable.
+								//$subjectID[] = $row["subjectID"];
+								$menteeSubjects[$row["subjectID"]] = $row["subjectName"];
+							}
+						} else {
+							echo "0 results";
+						}
+
+					?>
+					<div class="panel-heading">
+						<h3>Book Session</h3>
+					</div><!-- form tag to handle user input -->
+					<form action="bookedSession.php" id="bookSession" method="post" name="bookSession">
+						<!-- Table to help layout the information neatly-->
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="right" width="30%">Name:</th>
+									<th width="70%"><?php
+									                        //output the Mentee's firstname you queried for above.
+									                        echo "<input type='text' id='menteeName' name='menteeName' value='$menteeFirstName'/>";
+									                    ?></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th class="right" scope="row">House:</th>
+									<th><select name="formHouse">
+										<option id="1" value="houseID">
+											Asher
+										</option>
+										<option id="2" value="houseID">
+											Ephraim
+										</option>
+										<option id="3" value="houseID">
+											Judah
+										</option>
+										<option id="4" value="houseID">
+											Levi
+										</option>
+									</select></th>
+								</tr>
+								<tr>
+									<th class="right" scope="row">Subject:</th>
+									<th><!-- output mentee subject array as checkboxes -->
+									<?php
+									                      //loop through mentee subjects array 
+									                        //NOTE: change from checkbox to radio buttons if you only want them to select one subject (highly recommended)!!!!
+									                        foreach($menteeSubjects as $x => $x_value) {
+									                            //echo "mentee subject id = " . $x . ", Value = " . $x_value;
+									                            echo "<input type='checkbox' id='$x_value' name='subjects[]' value='$x'/>  $x_value<br>";
+									                        }
+									                    ?></th>
+								</tr>
+								<tr>
+									<th class="right" scope="row">Date:</th>
+									<th><!-- call the getMentors function once the user selects a date -->
+									<input id="sessionDate" name="sessionDate" onchange="getMentors();" required="" type="date"></th>
+								</tr>
+								<tr>
+									<th class="right" scope="row">Mentor:</th>
+									<th><select name="formHouse">
+										<option id="1" value="mentorID">
+											Jill Jack
+										</option>
+										<option id="2" value="mentorID">
+											Thomas Borinetti
+										</option>
+										<option id="3" value="mentorID">
+											Joshua Abbate
+										</option>
+										<option id="4" value="mentorID">
+											Daniel Lee
+										</option>
+									</select></th>
+								</tr>
+								<tr>
+									<th colspan="2" scope="row">
+										<p class="text-center"><input class="btn-success btn" type="submit" value="Book Now"></p>
+									</th>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="panel panel-default panel-warning">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<h3>Update Session (ToDo)</h3>
+					</div><!-- Table -->
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Name:</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Subject:</th>
+							</tr>
+							<tr>
+								<th scope="row">Date:</th>
+							</tr>
+							<tr>
+								<th scope="row">Mentor:</th>
+							</tr>
+							<tr>
+								<th scope="row">
+									<p class="text-center"><a class="btn-warning btn" href=""><span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span> Buy Now</a></p>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="panel panel-default panel-info">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<h3>Cancel Session (ToDo)</h3>
+					</div><!-- Table -->
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Lorem ipsum dolor sit</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1 ......</th>
+							</tr>
+							<tr>
+								<th scope="row">2 ......</th>
+							</tr>
+							<tr>
+								<th scope="row">3 ......</th>
+							</tr>
+							<tr>
+								<th scope="row">
+									<p class="text-center"><a class="btn-info btn" href=""><span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span> Buy Now</a></p>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="panel panel-default panel-danger">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<h3>Enterprise</h3>
+					</div><!-- Table -->
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Lorem ipsum dolor sit</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1 ......</th>
+							</tr>
+							<tr>
+								<th scope="row">2 ......</th>
+							</tr>
+							<tr>
+								<th scope="row">3 ......</th>
+							</tr>
+							<tr>
+								<th scope="row">
+									<p class="text-center"><a class="btn-danger btn" href=""><span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span> Buy Now</a></p>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<section class="well">
+		<h2 class="text-center">SQL Video Tutorial</h2>
+		<hr>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/9yeOJ0ZMUYw"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<hr>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<h2>Contact Us</h2>
+				<address>
+					<strong>MyCompany, Inc.</strong><br>
+					Sunny Autumn Plaza, Grand Coulee,<br>
+					CA, 91308-4075, US<br>
+					<abbr title="Phone">P:</abbr> (123) 456-7890
+				</address>
+				<h4>Social</h4>
+				<div class="row">
+					<div class="col-xs-2"><img alt="" class="img-circle" src="images/32X32.gif"></div>
+					<div class="col-xs-2"><img alt="" class="img-circle" src="images/32X32.gif"></div>
+					<div class="col-xs-2"><img alt="" class="img-circle" src="images/32X32.gif"></div>
+					<div class="col-xs-2"><img alt="" class="img-circle" src="images/32X32.gif"></div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<h2>Testimonials</h2>
+				<div class="media">
+					<div class="media-left">
+						<a href="#"><img alt="..." class="media-object" src="images/35X35.gif"></a>
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">Media heading</h4>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+					</div>
+				</div>
+				<div class="media">
+					<div class="media-left">
+						<a href="#"><img alt="..." class="media-object" src="images/35X35.gif"></a>
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">Media heading</h4>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-12">
+				<h2>About Us</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, voluptates, soluta velit nostrum ut iste exercitationem vitae ipsum repellendus laudantium ab possimus nemo odio cumque illum nulla laborum blanditiis unde.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, voluptates, soluta velit nostrum ut iste exercitationem vitae ipsum repellendus laudantium ab possimus nemo odio cumque illum nulla laborum blanditiis unde.</p>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<footer class="text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<p>Copyright © MyWebsite. All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+	</footer><!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery-1.11.3.min.js">
+	</script> <!-- Include all compiled plugins (below), or include individual files as needed --> 
+	<script src="js/bootstrap.js">
+	</script>f
+    
+	<script>
+	   //getMentors fuction based on the date selected in the book sessions form
+	  function getMentors(){
+	       //create a variable to store the date selected, refered by the id # .val() gets the value of the field.
+	       var selectedDate = $('#sessionDate').val();
+	       //we need to put it in a format of GET as we will be passing it to another file. variableName=value
+	       var dataDate = 'selectedDate=' + selectedDate;
+	      
+	      //use ajax to pass the information to the findMentors page and get back the html created by the php
+	      $.ajax({
+	           url: 'http://localhost/G21/G21/findMentors.php',
+	           type: 'GET',
+	           data: dataDate,
+	           success: function(data){
+	               //use the id to change the html to that created on the findMentors.php file.
+	               $('#dynamicMentors').html(data);    
+	           }
+	       });
+	   };
+	</script>
+    <?php 
+	    // close the connection to the database
+	    mysqli_close($connection);
+	    
+	    /*
+	    // remove all session variables
+	    session_unset(); 
+
+	    // destroy the session use this for when a user logs out.
+	    session_destroy(); 
+	    */
+	?>
 </body>
 </html>
