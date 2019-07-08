@@ -19,49 +19,49 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `g21`
+-- Database: G21
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logintable`
+-- Table structure for table LoginTable
 --
 
-CREATE TABLE `logintable` (
-    `userID` int(1) NOT NULL PRIMARY KEY,
-    `firstName` varchar(100) COLLATE utf8_bin NOT NULL,
-    `lastName` varchar(100) COLLATE utf8_bin NOT NULL,
-    `yearLevel` int(2) NOT NULL,
-    `email` varchar(200) COLLATE utf8_bin NOT NULL,
-    `username` int(11) NOT NULL,
-    `password` text COLLATE utf8_bin NOT NULL,
-    `verified` boolean
+CREATE TABLE LoginTable (
+	userID int(1) NOT NULL,
+    firstName varchar(100) COLLATE utf8_bin NOT NULL,
+    lastName varchar(100) COLLATE utf8_bin NOT NULL,
+    yearLevel int(2) NOT NULL,
+    email varchar(200) COLLATE utf8_bin NOT NULL,
+    username int(11) NOT NULL,
+    password varchar(50) COLLATE utf8_bin NOT NULL,
+    verified boolean
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `logintable`
+-- Dumping data for table LoginTable
 --
 
-INSERT INTO `logintable` (`userID`, `firstName`, `lastName`, `yearLevel`, `email`, `username`, `password`, `verified`) VALUES
+INSERT INTO LoginTable (userID, firstName, lastName, yearLevel, email, username, password, verified) VALUES
 (1, 'Jo', 'Smith', 7, 's12345@citipointe.qld.edu.au', 's12345', 'Abcde123', false);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usertypetable`
+-- Table structure for table UserTypeTable
 --
 
-CREATE TABLE `usertypetable` (
-    `userID` int(1) NOT NULL,
-    `userType` varchar(10) NOT NULL
+CREATE TABLE UserTypeTable (
+    userID int(1) NOT NULL PRIMARY KEY,
+    userType varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `usertypetable`
+-- Dumping data for table UserTypeTable
 --
 
-INSERT INTO `usertypetable` (`userID`, `userType`) VALUES
+INSERT INTO UserTypeTable (userID, userType) VALUES
 (1, 'Teacher'),
 (2, 'Mentor'),
 (3, 'Mentee');
@@ -69,38 +69,38 @@ INSERT INTO `usertypetable` (`userID`, `userType`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedbacktable`
+-- Table structure for table FeedbackTable
 --
 
-CREATE TABLE `feedbacktable` (
-    `feedbackID` int(5) NOT NULL PRIMARY KEY,
-    `sessionID` int(5) NOT NULL,
-    `feedbackText` text COLLATE utf8_bin NOT NULL
+CREATE TABLE FeedbackTable (
+    feedbackID int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	sessionID int(5) NOT NULL,
+    feedbackText text COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `feedbacktable`
+-- Dumping data for table FeedbackTable
 --
 
-INSERT INTO `feedbacktable` (`feedbackID`, `sessionID`, `feedbackText`) VALUES
+INSERT INTO FeedbackTable (feedbackID, sessionID, feedbackText) VALUES
 (1, 1, 'This was a great session, thank you Jill I learnt a lot.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `housetable`
+-- Table structure for table HouseTable
 --
 
-CREATE TABLE `housetable` (
-    `houseID` int(1) NOT NULL PRIMARY KEY,
-    `houseName` varchar(10) COLLATE utf8_bin NOT NULL
+CREATE TABLE HouseTable (
+    houseID int(1) NOT NULL PRIMARY KEY,
+    houseName varchar(10) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `housetable`
+-- Dumping data for table HouseTable
 --
 
-INSERT INTO `housetable` (`houseID`, `houseName`) VALUES
+INSERT INTO HouseTable (houseID, houseName) VALUES
 (1, 'Asher'),
 (2, 'Ephraim'),
 (3, 'Judah'),
@@ -109,307 +109,224 @@ INSERT INTO `housetable` (`houseID`, `houseName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menteesubjecttable`
+-- Table structure for table MenteeSubjectTable
 --
 
-CREATE TABLE `menteesubjecttable` (
-    `menteeID` int(5) NOT NULL PRIMARY KEY,
-    `subjectID` int(2) NOT NULL
+CREATE TABLE MenteeSubjectTable (
+    menteeID int(5) NOT NULL PRIMARY KEY,
+    subjectID int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `menteesubjecttable`
+-- Dumping data for table MenteeSubjectTable
 --
 
-INSERT INTO `menteesubjecttable` (`menteeID`, `subjectID`) VALUES
+INSERT INTO MenteeSubjectTable (menteeID, subjectID) VALUES
 (1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menteetable`
+-- Table structure for table MenteeTable
 --
 
-CREATE TABLE `menteetable` (
-    `menteeID` int(5) NOT NULL PRIMARY KEY,
-    `firstName` varchar(64) COLLATE utf8_bin NOT NULL,
-    `lastName` varchar(64) COLLATE utf8_bin NOT NULL,
-    `yearLevel` int(2) NOT NULL,
-    `email` varchar(64) COLLATE utf8_bin NOT NULL,
-    `gender` char(1) COLLATE utf8_bin NOT NULL,
-    `houseID` int(1) NOT NULL
+CREATE TABLE MenteeTable (
+    menteeID int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    firstName varchar(64) COLLATE utf8_bin NOT NULL,
+    lastName varchar(64) COLLATE utf8_bin NOT NULL,
+    yearLevel int(2) NOT NULL,
+    email varchar(64) COLLATE utf8_bin NOT NULL,
+    gender char(1) COLLATE utf8_bin NOT NULL,
+    houseID int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `menteetable`
+-- Dumping data for table MenteeTable
 --
 
-INSERT INTO `menteetable` (`menteeID`, `firstName`, `lastName`, `yearLevel`, `email`, `gender`, `houseID`) VALUES
+INSERT INTO MenteeTable (menteeID, firstName, lastName, yearLevel, email, gender, houseID) VALUES
 (1, 'Jo', 'Smith', 7, 's12345@citipointe.qld.edu.au', 'M', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mentorsubjecttable`
+-- Table structure for table MentorSubjectTable
 --
 
-CREATE TABLE `mentorsubjecttable` (
-    `mentorID` int(5) NOT NULL,
-    `subjectID` int(2) NOT NULL
+CREATE TABLE MentorSubjectTable (
+    mentorID int(5) NOT NULL,
+    subjectID int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `mentorsubjecttable`
+-- Dumping data for table MentorSubjectTable
 --
 
-INSERT INTO `mentorsubjecttable` (`mentorID`, `subjectID`) VALUES
+INSERT INTO MentorSubjectTable (mentorID, subjectID) VALUES
 (1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mentortable`
+-- Table structure for table MentorTable
 --
 
-CREATE TABLE `mentortable` (
-    `mentorID` int(5) NOT NULL PRIMARY KEY,
-    `firstName` varchar(64) COLLATE utf8_bin NOT NULL,
-    `lastName` varchar(64) COLLATE utf8_bin NOT NULL,
-    `yearLevel` int(2) NOT NULL,
-    `email` varchar(64) COLLATE utf8_bin NOT NULL,
-    `gender` char(1) COLLATE utf8_bin NOT NULL,
-    `houseID` int(1) NOT NULL
+CREATE TABLE MentorTable (
+    mentorID int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    firstName varchar(64) COLLATE utf8_bin NOT NULL,
+    lastName varchar(64) COLLATE utf8_bin NOT NULL,
+    yearLevel int(2) NOT NULL,
+    email varchar(64) COLLATE utf8_bin NOT NULL,
+    gender char(1) COLLATE utf8_bin NOT NULL,
+    houseID int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `mentortable`
+-- Dumping data for table MentorTable
 --
 
-INSERT INTO `mentortable` (`mentorID`, `firstName`, `lastName`, `yearLevel`, `email`, `gender`, `houseID`) VALUES
+INSERT INTO MentorTable (mentorID, firstName, lastName, yearLevel, email, gender, houseID) VALUES
 (1, 'Sana', 'Robinson', 11, 's23456@email.com', 'F', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sessionstable`
+-- Table structure for table SessionTable
 --
 
-CREATE TABLE `sessionstable` (
-    `sessionID` int(5) NOT NULL PRIMARY KEY,
-    `date` date NOT NULL,
-    `subjectID` int(2) NOT NULL,
-    `menteeID` int(5) NOT NULL,
-    `mentorID` int(5) NOT NULL,
-    `teacherID` int(5) NOT NULL
+CREATE TABLE SessionTable (
+    sessionID int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    date date NOT NULL,
+    subjectID int(2) NOT NULL,
+    menteeID int(5) NOT NULL,
+    mentorID int(5) NOT NULL,
+    teacherID int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `sessionstable`
+-- Dumping data for table SessionTable
 --
 
-INSERT INTO `sessionstable` (`sessionID`, `date`, `subjectID`, `menteeID`, `mentorID`, `teacherID`) VALUES
+INSERT INTO SessionTable (sessionID, date, subjectID, menteeID, mentorID, teacherID) VALUES
 (1, '2019-05-16', 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subjecttable`
+-- Table structure for table SubjectTable
 --
 
-CREATE TABLE `subjecttable` (
-    `subjectID` int(2) NOT NULL PRIMARY KEY,
-    `subjectName` varchar(64) COLLATE utf8_bin NOT NULL,
-    `subjectDescription` varchar(100) COLLATE utf8_bin NOT NULL
+CREATE TABLE SubjectTable (
+    subjectID int(2) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    subjectName varchar(64) COLLATE utf8_bin NOT NULL,
+    subjectDescription varchar(100) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `subjecttable`
+-- Dumping data for table SubjectTable
 --
 
-INSERT INTO `subjecttable` (`subjectID`, `subjectName`, `subjectDescription`) VALUES
+INSERT INTO SubjectTable (subjectID, subjectName, subjectDescription) VALUES
 (1, 'Digital Solutions', 'Help with Digital Technologies or Digital Solutions.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teachersubjecttable`
+-- Table structure for table TeacherSubjectTable
 --
 
-CREATE TABLE `teachersubjecttable` (
-    `teacherID` int(5) NOT NULL,
-    `subjectID` int(2) NOT NULL,
-    `mentorID` int(5) NOT NULL
+CREATE TABLE TeacherSubjectTable (
+    teacherID int(5) NOT NULL,
+    subjectID int(2) NOT NULL,
+    mentorID int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `teachersubjecttable`
+-- Dumping data for table TeacherSubjectTable
 --
 
-INSERT INTO `teachersubjecttable` (`teacherID`, `subjectID`, `mentorID`) VALUES
+INSERT INTO TeacherSubjectTable (teacherID, subjectID, mentorID) VALUES
 (1, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teachertable`
+-- Table structure for table TeacherTable
 --
 
-CREATE TABLE `teachertable` (
-    `teacherID` int(5) NOT NULL PRIMARY KEY,
-    `firstName` varchar(64) COLLATE utf8_bin NOT NULL,
-    `lastName` varchar(64) COLLATE utf8_bin NOT NULL,
-    `email` varchar(64) COLLATE utf8_bin NOT NULL
+CREATE TABLE TeacherTable (
+    teacherID int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    firstName varchar(64) COLLATE utf8_bin NOT NULL,
+    lastName varchar(64) COLLATE utf8_bin NOT NULL,
+    email varchar(64) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `teachertable`
+-- Dumping data for table TeacherTable
 --
 
-INSERT INTO `teachertable` (`teacherID`, `firstName`, `lastName`, `email`) VALUES
+INSERT INTO TeacherTable (teacherID, firstName, lastName, email) VALUES
 (1, 'Bryde', 'Dodd', 'bryded@citipointe.qld.edu.au');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `feedbacktable`
---
-ALTER TABLE `feedbacktable`
-    ADD KEY `sessionID` (`sessionID`);
-
---
--- Indexes for table `menteesubjecttable`
---
-ALTER TABLE `menteesubjecttable`
-    ADD KEY `menteeID` (`menteeID`),
-    ADD KEY `subjectID` (`subjectID`);
-
---
--- Indexes for table `menteetable`
---
-ALTER TABLE `menteetable`
-    ADD KEY `houseID` (`houseID`);
-
---
--- Indexes for table `mentorsubjecttable`
---
-ALTER TABLE `mentorsubjecttable`
-    ADD KEY `subjectID` (`subjectID`),
-    ADD KEY `MentorSubjectTable_ibfk_1` (`mentorID`);
-
---
--- Indexes for table `mentortable`
---
-ALTER TABLE `mentortable`
-    ADD KEY `houseID` (`houseID`);
-
---
--- Indexes for table `sessionstable`
---
-ALTER TABLE `sessionstable`
-    ADD KEY `subjectID` (`subjectID`),
-    ADD KEY `menteeID` (`menteeID`),
-    ADD KEY `mentorID` (`mentorID`),
-    ADD KEY `teacherID` (`teacherID`);
-
---
--- Indexes for table `teachersubjecttable`
---
-ALTER TABLE `teachersubjecttable`
-    ADD KEY `teacherID` (`teacherID`),
-    ADD KEY `subjectID` (`subjectID`),
-    ADD KEY `mentorID` (`mentorID`);
-
---
--- AUTO_INCREMENT for table `feedbacktable`
---
-ALTER TABLE `feedbacktable`
-    MODIFY `feedbackID` int(5) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `menteetable`
---
-ALTER TABLE `menteetable`
-    MODIFY `menteeID` int(5) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `mentortable`
---
-ALTER TABLE `mentortable`
-    MODIFY `mentorID` int(5) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `sessionstable`
---
-ALTER TABLE `sessionstable`
-    MODIFY `sessionID` int(5) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `subjecttable`
---
-ALTER TABLE `subjecttable`
-    MODIFY `subjectID` int(5) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `teachertable`
---
-ALTER TABLE `teachertable`
-    MODIFY `teacherID` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `feedbacktable`
+-- Constraints for table LoginTable
 --
-ALTER TABLE `feedbacktable`
-    ADD CONSTRAINT `FeedbackTable_ibfk_1` FOREIGN KEY (`sessionID`) REFERENCES `sessionstable` (`sessionID`);
+ALTER TABLE LoginTable
+    ADD CONSTRAINT LoginTable_fk_1 FOREIGN KEY (userID) REFERENCES UserTypeTable (userID);
 
 --
--- Constraints for table `menteesubjecttable`
+-- Constraints for table FeedbackTable
 --
-ALTER TABLE `menteesubjecttable`
-    ADD CONSTRAINT `MenteeSubjectTable_ibfk_1` FOREIGN KEY (`menteeID`) REFERENCES `menteetable` (`menteeID`),
-    ADD CONSTRAINT `MenteeSubjectTable_ibfk_2` FOREIGN KEY (`subjectID`) REFERENCES `subjecttable` (`subjectID`);
+ALTER TABLE FeedbackTable
+    ADD CONSTRAINT FeedbackTable_fk_1 FOREIGN KEY (sessionID) REFERENCES SessionTable (sessionID);
 
 --
--- Constraints for table `menteetable`
+-- Constraints for table MenteeSubjectTable
 --
-ALTER TABLE `menteetable`
-    ADD CONSTRAINT `MenteeTable_ibfk_1` FOREIGN KEY (`houseID`) REFERENCES `housetable` (`houseID`);
+ALTER TABLE MenteeSubjectTable
+    ADD CONSTRAINT MenteeSubjectTable_fk_1 FOREIGN KEY (menteeID) REFERENCES MenteeTable (menteeID),
+    ADD CONSTRAINT MenteeSubjectTable_fk_2 FOREIGN KEY (subjectID) REFERENCES SubjectTable (subjectID);
 
 --
--- Constraints for table `mentorsubjecttable`
+-- Constraints for table MenteeTable
 --
-ALTER TABLE `mentorsubjecttable`
-    ADD CONSTRAINT `MentorSubjectTable_ibfk_1` FOREIGN KEY (`mentorID`) REFERENCES `mentortable` (`mentorID`),
-    ADD CONSTRAINT `MentorSubjectTable_ibfk_2` FOREIGN KEY (`subjectID`) REFERENCES `subjecttable` (`subjectID`);
+ALTER TABLE MenteeTable
+    ADD CONSTRAINT MenteeTable_fk_1 FOREIGN KEY (houseID) REFERENCES HouseTable (houseID);
 
 --
--- Constraints for table `mentortable`
+-- Constraints for table MentorSubjectTable
 --
-ALTER TABLE `mentortable`
-    ADD CONSTRAINT `MentorTable_ibfk_1` FOREIGN KEY (`houseID`) REFERENCES `housetable` (`houseID`);
+ALTER TABLE MentorSubjectTable
+    ADD CONSTRAINT MentorSubjectTable_fk_1 FOREIGN KEY (mentorID) REFERENCES MentorTable (mentorID),
+    ADD CONSTRAINT MentorSubjectTable_fk_2 FOREIGN KEY (subjectID) REFERENCES SubjectTable (subjectID);
 
 --
--- Constraints for table `sessionstable`
+-- Constraints for table MentorTable
 --
-ALTER TABLE `sessionstable`
-    ADD CONSTRAINT `SessionsTable_ibfk_1` FOREIGN KEY (`menteeID`) REFERENCES `menteetable` (`menteeID`),
-    ADD CONSTRAINT `SessionsTable_ibfk_2` FOREIGN KEY (`mentorID`) REFERENCES `mentortable` (`mentorID`),
-    ADD CONSTRAINT `SessionsTable_ibfk_3` FOREIGN KEY (`subjectID`) REFERENCES `subjecttable` (`subjectID`),
-    ADD CONSTRAINT `SessionsTable_ibfk_4` FOREIGN KEY (`teacherID`) REFERENCES `teachertable` (`teacherID`);
+ALTER TABLE MentorTable
+    ADD CONSTRAINT MentorTable_fk_1 FOREIGN KEY (houseID) REFERENCES HouseTable (houseID);
 
 --
--- Constraints for table `teachersubjecttable`
+-- Constraints for table SessionTable
 --
-ALTER TABLE `teachersubjecttable`
-    ADD CONSTRAINT `TeacherSubjectTable_ibfk_1` FOREIGN KEY (`teacherID`) REFERENCES `teachertable` (`teacherID`),
-    ADD CONSTRAINT `TeacherSubjectTable_ibfk_2` FOREIGN KEY (`mentorID`) REFERENCES `mentortable` (`mentorID`),
-    ADD CONSTRAINT `TeacherSubjectTable_ibfk_3` FOREIGN KEY (`subjectID`) REFERENCES `subjecttable` (`subjectID`);
-COMMIT;
+ALTER TABLE SessionTable
+    ADD CONSTRAINT SessionTable_fk_1 FOREIGN KEY (menteeID) REFERENCES MenteeTable (menteeID),
+    ADD CONSTRAINT SessionTable_fk_2 FOREIGN KEY (mentorID) REFERENCES MentorTable (mentorID),
+    ADD CONSTRAINT SessionTable_fk_3 FOREIGN KEY (subjectID) REFERENCES SubjectTable (subjectID),
+    ADD CONSTRAINT SessionTable_fk_4 FOREIGN KEY (teacherID) REFERENCES TeacherTable (teacherID);
+
+--
+-- Constraints for table TeacherSubjectTable
+--
+ALTER TABLE TeacherSubjectTable
+    ADD CONSTRAINT TeacherSubjectTable_fk_1 FOREIGN KEY (teacherID) REFERENCES TeacherTable (teacherID),
+    ADD CONSTRAINT TeacherSubjectTable_fk_2 FOREIGN KEY (mentorID) REFERENCES MentorTable (mentorID),
+    ADD CONSTRAINT TeacherSubjectTable_fk_3 FOREIGN KEY (subjectID) REFERENCES SubjectTable (subjectID);
+	
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

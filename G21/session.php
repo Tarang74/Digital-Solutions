@@ -6,11 +6,9 @@
 	$adminPassword = "";
 	$database = "G21";
 	
-	$connection = new mysqli($host, $adminUsername, $adminPassword, $database) or die ($connection->error);
-//	$test = mysqli_connect($host, $adminUsername, $adminPassword, $database);
-//	
-//	if($test === true) {
-//		die("SQL Connection Error" . mysqli_connect_error());
-//	}
-//
+	$connection = mysqli_connect($host, $adminUsername, $adminPassword, $database);
+
+	if($connection === false) {
+		die("SQL Connection Error" . mysqli_connect_error());
+	}
 ?>
