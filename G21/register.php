@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$username_error = "Enter Username.";
 	} else {
 		//Prepare a select statement
-		$sql = "SELECT id FROM users WHERE username = ?";
+		$sql = "SELECT userID FROM logintable WHERE username = ?";
 		
 		if($stmt = mysqli_prepare($connection, $sql)) {
 			//Bind variables to the prepared statement as paramaters
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				// store result
 				mysqli_stmt_store_result($stmt);
 				
-				if(mysqli_stmt_num_rows($stmt) == 1) {
+				if(mysqli_stmt_num_rows($stmt) == 2) {
 					$username_error = "Account with username already exists.";
 				} else {
 					$username = trim($_POST["username"]);
@@ -66,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	if(/*empty($firstName_error) && empty($lastName_error) && empty($email_error) && empty($yearLevel_error) && */empty($username_error) && empty($password_error) && empty($confirm_password_error)) {
 		
 		//Prepare an insert statement
-		$sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+		$sql = "INSERT INTO loginTable (username, password) VALUES (?, ?)";
 		
 		if($stmt = mysqli_prepare($connection, $sql)) {
 			//Bind variables to the prepared statement as parameters
@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			//Attempt to execute the prepared statement
 			if(mysqli_stmt_execute($stmt)) {
 				//Redirect to login page
-				header("location: login.php");
+				header("location: index.php");
 			} else {
 				echo "Something went wroooong.";
 			}
