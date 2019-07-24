@@ -6,7 +6,7 @@
 <file name="glyphicons-halflings-regular.ttf" server="U:/XAMPP/htdocs/G21/" local="131310732620000000" remote="131310732620000000" Dst="0" />
 <file name="glyphicons-halflings-regular.woff" server="U:/XAMPP/htdocs/G21/" local="131310732620000000" remote="131310732620000000" Dst="0" />
 <file name="glyphicons-halflings-regular.woff2" server="U:/XAMPP/htdocs/G21/" local="131310732620000000" remote="131310732620000000" Dst="0" />
-<file name="Luna.ttf" server="U:/XAMPP/htdocs/G21/" local="130758813580000000" remote="130758813580000000" Dst="0" />
+<file name="Luna.ttf" server="U:/XAMPP/htdocs/G21/" local="132063472153109374" remote="132063472150000000" Dst="0" />
 <file name="glyphicons-halflings-regular.eot" server="F:/xampp/htdocs/G21/" local="132063472153359221" remote="132063472150000000" Dst="0" />
 <file name="glyphicons-halflings-regular.svg" server="F:/xampp/htdocs/G21/" local="132063472153589072" remote="132063472150000000" Dst="0" />
 <file name="glyphicons-halflings-regular.ttf" server="F:/xampp/htdocs/G21/" local="132063472153629054" remote="132063472150000000" Dst="0" />
@@ -25,4 +25,6 @@
 <file name="glyphicons-halflings-regular.woff" server="F:/xampp/htdocs/G21/G21/" local="132063472153738980" remote="132063472150000000" Dst="0" />
 <file name="glyphicons-halflings-regular.woff2" server="F:/xampp/htdocs/G21/G21/" local="132063472153848912" remote="132063472150000000" Dst="0" />
 <file name="Luna.ttf" server="F:/xampp/htdocs/G21/G21/" local="132063472153109374" remote="132063472150000000" Dst="0" />
+<file name="Luna.ttf" server="U:/XAMPP/htdocs/G21" local="132063472153109374" remote="132063472150000000" Dst="0" />
+<file name="Luna.ttf" server="U:/xampp/htdocs/G21/" local="132063472153109374" remote="132063472150000000" Dst="0" />
 </dwsync>

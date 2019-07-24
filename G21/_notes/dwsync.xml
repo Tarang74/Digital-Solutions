@@ -2,10 +2,10 @@
 <dwsync>
 <file name="index.php" server="lampp/htdocs/g21example/" local="3642800712" remote="3642800712" Dst="-1" />
 <file name="index.php" server="U:/XAMPP/htdocs/G21_example/" local="132061597381042751" remote="132061597380000000" Dst="0" />
-<file name="index.php" server="U:/XAMPP/htdocs/G21/" local="132061614042731615" remote="132061614040000000" Dst="0" />
+<file name="index.php" server="U:/XAMPP/htdocs/G21/" local="132081826011800282" remote="132081826010000000" Dst="0" />
 <file name="index.php" server="F:/xampp/htdocs/G21/" local="132081826011800282" remote="132081826010000000" Dst="0" />
 <file name="index.php" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132068668944349821" remote="132068668940000000" Dst="0" />
-<file name="G21.sql" server="F:/xampp/htdocs/G21/" local="132078897770213744" remote="132078897770000000" Dst="0" />
+<file name="G21.sql" server="F:/xampp/htdocs/G21/" local="132082293049766492" remote="132082293040000000" Dst="0" />
 <file name="register.php" server="F:/xampp/htdocs/G21/" local="132076507522893923" remote="132076507520000000" Dst="0" />
 <file name="reset-password.php" server="F:/xampp/htdocs/G21/" local="132071456870025045" remote="132071456870000000" Dst="0" />
 <file name="logout.php" server="F:/xampp/htdocs/G21/" local="132071422537639966" remote="132071422530000000" Dst="0" />
@@ -18,6 +18,16 @@
 <file name="register.php" server="F:/xampp/htdocs/G21/G21/" local="132071437295357444" remote="132071437290000000" Dst="0" />
 <file name="reset-password.php" server="F:/xampp/htdocs/G21/G21/" local="132071456870025045" remote="132071456870000000" Dst="0" />
 <file name="footer.php" server="F:/xampp/htdocs/G21/" local="132076517560000000" remote="132076517560000000" Dst="0" />
-<file name="header.php" server="F:/xampp/htdocs/G21/" local="132081796126807881" remote="132081796120000000" Dst="0" />
-<file name="signup.php" server="F:/xampp/htdocs/G21/" local="132081886764306554" remote="132081886760000000" Dst="0" />
+<file name="header.php" server="F:/xampp/htdocs/G21/" local="132082288959552299" remote="132082288950000000" Dst="0" />
+<file name="signup.php" server="F:/xampp/htdocs/G21/" local="132083552876406815" remote="132083552870000000" Dst="0" />
+<file name="signup.php" server="G:/xampp/htdocs/G21/" local="132081900191501777" remote="132081900190000000" Dst="0" />
+<file name="header.php" server="U:/XAMPP/htdocs/G21" local="132081796126807881" remote="132081796120000000" Dst="0" />
+<file name="footer.php" server="U:/XAMPP/htdocs/G21" local="132076517560000000" remote="132076517560000000" Dst="0" />
+<file name="index.php" server="U:/XAMPP/htdocs/G21" local="132081826011800282" remote="132081826010000000" Dst="0" />
+<file name="header.php" server="U:/XAMPP/htdocs/G21/" local="132082288959552299" remote="132082288950000000" Dst="0" />
+<file name="footer.php" server="U:/XAMPP/htdocs/G21/" local="132076517560000000" remote="132076517560000000" Dst="0" />
+<file name="signup.php" server="U:/XAMPP/htdocs/G21/" local="132081900191501777" remote="132081900190000000" Dst="0" />
+<file name="header.php" server="U:/xampp/htdocs/G21/" local="132082288959552299" remote="132082288950000000" Dst="0" />
+<file name="G21.sql" server="U:/xampp/htdocs/G21/" local="132082293049766492" remote="132082293040000000" Dst="0" />
+<file name="test.php" server="F:/xampp/htdocs/G21/" local="132082745771646648" remote="132082745770000000" Dst="0" />
 </dwsync>

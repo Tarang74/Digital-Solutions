@@ -222,6 +222,7 @@ main {
   margin-top: 5px;
   margin-bottom: 10px;
   color: #737373;
+	position: relative;
 }
 .login {
 	position: absolute;

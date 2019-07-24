@@ -18,7 +18,7 @@
 				</ul>
 			</section>
 			<section class="headerright">
-				<a id="toggle">Login</a>
+				<a id="toggle" style="cursor:pointer;">Login</a>
 				<form action="include/logout.inc.php" method="post" class="logout-form">
 					<button type="submit" name="logout-submit" placeholder="logout">Logout</button>
 				</form>
