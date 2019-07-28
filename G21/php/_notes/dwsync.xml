@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="signup.inc.php" server="F:/xampp/htdocs/G21/" local="132083560063536023" remote="132083560060000000" Dst="0" />
+<file name="signup.inc.php" server="F:/xampp/htdocs/G21/" local="132087884202099402" remote="132087884200000000" Dst="0" />
 <file name="session.php" server="F:/xampp/htdocs/G21/" local="132081810830039517" remote="132081810830000000" Dst="0" />
-<file name="login.inc.php" server="F:/xampp/htdocs/G21/" local="132081807340000000" remote="132081807340000000" Dst="0" />
+<file name="login.inc.php" server="F:/xampp/htdocs/G21/" local="132087606320681053" remote="132087606320000000" Dst="0" />
 <file name="session.php" server="U:/XAMPP/htdocs/G21/" local="132081810830039517" remote="132081810830000000" Dst="0" />
-<file name="signup.inc.php" server="U:/XAMPP/htdocs/G21/" local="132081893896125841" remote="132081893890000000" Dst="0" />
+<file name="signup.inc.php" server="U:/XAMPP/htdocs/G21/" local="132085822415191231" remote="132085822410000000" Dst="0" />
+<file name="session.php" server="U:/xampp/htdocs/G21/" local="132081810830039517" remote="132081810830000000" Dst="0" />
+<file name="signup.inc.php" server="U:/xampp/htdocs/G21/" local="132085822415191231" remote="132085822410000000" Dst="0" />
+<file name="login.inc.php" server="U:/xampp/htdocs/G21/" local="132081807340000000" remote="132081807340000000" Dst="0" />
+<file name="login.inc.php" server="F:/xampp/htdocs/Testing/G21/" local="132087917585203235" remote="132087917580000000" Dst="0" />
+<file name="session.php" server="F:/xampp/htdocs/Testing/G21/" local="132081810830039517" remote="132081810830000000" Dst="0" />
+<file name="signup.inc.php" server="F:/xampp/htdocs/Testing/G21/" local="132087900018241315" remote="132087900010000000" Dst="0" />
+<file name="logout.inc.php" server="F:/xampp/htdocs/Testing/G21/" local="132087920608208003" remote="132087920600000000" Dst="0" />
 </dwsync>

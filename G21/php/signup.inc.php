@@ -4,12 +4,12 @@ if(isset($_POST['signup-submit'])) {
 	
 	require 'session.php';
 	
-	$firstName = $lastName = $gender = $yearLevel = $email = $password = $passwordConfirm = "";
+	$firstName = $lastName = $gender = $yearLevel = $username = $password = $passwordConfirm = "";
 	
-	$firstName_error = $lastName_error = $gender_error = $yearLevel_error = $email_error = $password_error = $passwordConfirm_error = "";
-	
+	$firstName_error = $lastName_error = $gender_error = $yearLevel_error = $username_error = $password_error = $passwordConfirm_error = "";
+
 	$fn = $ln = $g = $yl = $e = $e_ = $p = $p_ = $pc = "";
-	
+
 	if(!empty($_POST['firstName'])) {
 		$firstName = $_POST['firstName'];
 	} else {
@@ -34,42 +34,34 @@ if(isset($_POST['signup-submit'])) {
 	if(!empty($_POST['yearLevel'])) {
 		$yearLevel = $_POST['yearLevel'];
 	} else {
-		$yearLevel_error = "Please select your year level";
+		$yearLevel_error = "Please select year level";
 		$yl = "&yl";
 	}
 	
-	if(!empty($_POST['email'])) {
+	if(!empty($_POST['username'])) {
 		
-		if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-		
-			$sql = "SELECT emailAddress FROM usertable WHERE userID = ?";
-			$stmt = mysqli_stmt_init($connection);
-			
-			if(mysqli_stmt_prepare($stmt, $sql)) {
-				mysqli_stmt_bind_param($stmt, "s", $_POST['email']);
-				mysqli_stmt_execute($stmt);
-				mysqli_stmt_store_result($stmt);
-				$resultCheck = mysqli_stmt_num_rows($stmt);
-				
-				if($resultCheck = 0) {
-					$email = $_POST['email'];
-				} else {
-					$email_error = "That email is taken. Try another.";
-					$e_ = "&e*";
-				}				
+		$sql = "SELECT user_username FROM usertable WHERE userID = ?";
+		$stmt = mysqli_stmt_init($connection);
+
+		if(mysqli_stmt_prepare($stmt, $sql)) {
+			mysqli_stmt_bind_param($stmt, "s", $_POST['username']);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_store_result($stmt);
+			$resultCheck = mysqli_stmt_num_rows($stmt);
+
+			if($resultCheck == 0) {
+				$username = $_POST['username'];
 			} else {
-				header("Location: ../signup.php?error=sqlerror");
-				exit();
+				$username_error = "That username is taken. Try another.";
+				$u_ = "&u*";
 			}
 		} else {
-			$email_error = "Email is invalid";
-			$e_ = "&e";
-			echo "invalidasdfafasdfasdf";
+			header("Location: ../signup.php?error=sqlerror");
+			exit();
 		}
-		
 	} else {
-		$email_error = "Enter email";
-		$e = "&e";
+		$username_error = "Enter username";
+		$u = "&u";
 	}
 	
 	if(empty($_POST['password'])) {
@@ -80,47 +72,96 @@ if(isset($_POST['signup-submit'])) {
 			$pc = "&pc";
 	} elseif(strlen($_POST['password']) < 6) {
 			$password_error = "Use 6 or more characters for your password";
-			$p_ = "&p";
+			$p_ = "&p*";
 	} elseif ($_POST['password'] !== $_POST['passwordConfirm']) {
 			$passwordConfirm_error = "The passwords do not match. Try again.";
-			$pc = "&pc";
+			$pc = "&pc*";
 	} else {
 			$password = $_POST['password'];
 	}
 	
-	if($fn || $ln || $g || $yl || $e || $e_ || $p || $p_ || $pc) {
+	if($fn || $ln || $g || $yl || $u || $u_ || $p || $p_ || $pc) {
 		$empty = "";
 		$invalid = "";
 		
-		if($fn || $ln || $g || $yl || $e || $p || $pc) {
-			$empty = "$fn$ln$g$yl$e$p$pc";
-		}
-		if($e_ || $p_) {
-			$invalid = "$e_$p_";
+		$G_fn = $G_ln = $G_g = $G_yl = $G_u = "";
+		
+		if(!empty($firstName)) {
+			$G_fn = "&g_fn=$firstName";
 		}
 		
-		if(!empty($empty) && !empty($invalid)) {
-			$empty1 = "empty$empty";
-			$invalid1 = "invalid$invalid";
+		if(!empty($lastName)) {
+			$G_ln = "&g_ln=$lastName";
+		}
+		
+		if(!empty($gender)) {
+			$G_g = "&g_g=$gender";
+		}
+		
+		if(!empty($yearLevel)) {
+			$G_yl = "&g_yl=$yearLevel";
+		}
+		
+		if(!empty($username)) {
+			$G_u = "&g_u=$username";
+		}
+		if($G_fn || $G_ln || $G_g || $G_yl || $G_u) {
+			$fields = "$G_fn$G_ln$G_g$G_yl$G_u";
+		}
+		if($fn || $ln || $g || $yl || $u || $p || $pc) {
+			$empty = "$fn$ln$g$yl$u$p$pc";
+		}
+		if($u_ || $p_) {
+			$invalid = "$u_$p_";
+		}
+		
+		if(!empty($fields) && !empty($empty) && !empty($invalid)) { 
 			
-			header("Location: ../signup.php?errors=$empty1*$invalid1");
+			header("Location: ../signup.php?error=empty=$empty&&invalid=$invalid&&fields=$fields");
+			exit();
+		} elseif (!empty($empty) && !empty($invalid)) {
+			
+			header("Location: ../signup.php?error=empty=$empty&&invalid=$invalid");
+			exit();
+		} elseif (!empty($empty) && !empty($fields)) {
+			
+			header("Location: ../signup.php?error=empty=$empty&&fields=$fields");
+			exit();
+		} elseif (!empty($invalid) && !empty($fields)) {
+			
+			header("Location: ../signup.php?error=invalid=$invalid&&fields=$fields");
 			exit();
 		} elseif (!empty($empty)) {
-			$empty1 = "empty$empty";
 			
-			header("Location: ../signup.php?errors=$empty1");
+			header("Location: ../signup.php?error=empty=$empty");
 			exit();
 		} elseif (!empty($invalid)) {
-			$invalid1 = "invalid$invalid";
 			
-			header("Location: ../signup.php?errors=$invalid1");
+			header("Location: ../signup.php?error=invalid=$invalid");
 			exit();
-		} 
+		}
 	}
 	
-	if(empty($firstName_error) && empty($lastName_error) && empty($yearLevel_error) && empty($email_error) && empty($password_error) && empty($passwordConfirm_error)) {
-		//$sql = "INSERT INTO users (userRole, firstName, lastName, ) VALUES ()";
-		header("Location: ../signup.php?complete");
+	if(empty($firstName_error) && empty($lastName_error) && empty($yearLevel_error) && empty($username_error) && empty($password_error) && empty($passwordConfirm_error)) {
+		
+		$sql = "INSERT INTO usertable (firstName, lastName, gender, yearLevel, emailAddress, user_username, user_password) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		$stmt = mysqli_stmt_init($connection);
+		
+		$emailAddress = $username."@citipointe.qld.edu.au";
+		
+		if(mysqli_stmt_prepare($stmt, $sql)) {
+			mysqli_stmt_bind_param($stmt, "sssisss", $firstName, $lastName, $gender, $yearLevel, $emailAddress, $username, $p_password);
+			$p_password = password_hash($password, PASSWORD_DEFAULT);
+			mysqli_stmt_execute($stmt);
+		}
+		
+		mysqli_stmt_close($stmt);
+		mysqli_close($connection);
+		
+		header("Location: ../signup.php?signup=success");
 		exit();
 	}
+} else {
+	header("Location: ../signup.php");
+	exit();
 }

@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!doctype html>
 <html>
 	<head>
@@ -18,23 +20,23 @@
 				</ul>
 			</section>
 			<section class="headerright">
-				<a id="toggle" style="cursor:pointer;">Login</a>
-				<form action="include/logout.inc.php" method="post" class="logout-form">
+				
+				<?php
+				if(isset($_SESSION['userID'])) {
+					echo '<form action="php/logout.inc.php" method="post" class="logout-form">
 					<button type="submit" name="logout-submit" placeholder="logout">Logout</button>
-				</form>
+				</form>';
+				} else {
+					echo '<a id="toggle" style="cursor:pointer;">Login</a>';
+				}
+				?>
+				
 			</section>
 		</nav>
 	</header>
 	<main>
 		<div>
-			<div id="login" class="login">
-				<form action="include/login.inc.php" method="post" class="login-form">
-					<input type="text" name="mailuid" placeholder="Username/Email">
-					<input type="password" name="password" placeholder="Password">
-					<button type="submit" name="login-submit">Login</button>
-				</form>
-				<a style="font-size:10px; color:lightblue;" href="signup.php">Signup</a>
-			</div>
+			<?php require("login.php"); ?>
 		</div>
 	</main>
 	<script>

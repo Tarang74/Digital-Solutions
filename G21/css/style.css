@@ -12,7 +12,7 @@
 	text-rendering: optimizeLegibility;
 }
 @keyframes fadeIn {
-	to {
+	to {he
 		opacity: 1;
 	}
 }
@@ -221,7 +221,7 @@ main {
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #737373;
+  color: #FF1519;
 	position: relative;
 }
 .login {
