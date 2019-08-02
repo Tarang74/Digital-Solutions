@@ -8,16 +8,7 @@
 </head>
 
 <body>
-	<?php require("header.php"); ?>
-	
-	<?php 
-		if(isset($_SESSION['userID'])) {
-			echo '<p>You are logged in</p>';
-		} else {
-			echo '<p>You are logged out</p>';
-		}
-	?>
-	
+	<?php require("login.php"); ?>
 	<?php require("footer.php"); ?>
 </body>
 </html>

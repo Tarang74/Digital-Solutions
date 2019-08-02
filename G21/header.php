@@ -22,7 +22,7 @@
 			<section class="headerright">
 				
 				<?php
-				if(isset($_SESSION['userID'])) {
+				if(isset($_SESSION['login'])) {
 					echo '<form action="php/logout.inc.php" method="post" class="logout-form">
 					<button type="submit" name="logout-submit" placeholder="logout">Logout</button>
 				</form>';
@@ -34,11 +34,7 @@
 			</section>
 		</nav>
 	</header>
-	<main>
-		<div>
-			<?php require("login.php"); ?>
-		</div>
-	</main>
+
 	<script>
 		$(function() {
 			$(document).ready(function() {

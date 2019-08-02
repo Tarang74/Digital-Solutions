@@ -36,16 +36,31 @@ if(isset($_POST['login-submit'])) {
 				} elseif($passwordCheck == true) {
 					session_start();
 					$_SESSION['userID'] = $row['userID'];
-					$_SESSION['username'] = $row['user_username'];
+					$_SESSION['firstname'] = $row['firstName'];
+					$_SESSION['lastname'] = $row['lastName'];
 					
-					header ("Location: ../index.php?login=success");
+   				if($row['userRole'] == "student") {
+						$_SESSION['userRole'] = "student";
+						header("Location: ../welcome.php?userID=".$row['userID']);
+					} elseif($row['userRole'] == "mentor") {
+						$_SESSION['userRole'] = "mentor";
+						header("Location: ../welcome.php?userID=".$row['userID']);
+					} elseif($row['userRole'] == "teacher") {
+						$_SESSION['userRole'] = "teacher";
+						header("Location: ../welcome.php?userID=".$row['userID']);
+					} elseif($row['userRole'] == "admin") {
+						$_SESSION['userRole'] = "admin";
+						header("Location: ../welcome.php?userID=".$row['userID']);
+					}
+					
+					header ("Location: ../welcome.php");
 					exit();
 				} else {
 					header ("Location: ../index.php?error=wrongpassword");
 					exit();
 				}
 			} else {
-				header ("Location: ../index.php?error=nouser");
+				header ("Location: ../index.php?error=nouser2");
 				exit();
 			}
 		}	
