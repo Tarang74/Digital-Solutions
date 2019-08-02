@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="bootstrap.css" server="lampp/htdocs/g21example/" local="3642490182" remote="3642490182" Dst="-1" />
@@ -8,4 +9,16 @@
 <file name="bootstrap.css" server="U:/xampp/htdocs/G21/" local="132090853050000000" remote="132090853050000000" Dst="0" />
 <file name="bootstrap.css" server="F:/xampp/htdocs/Testing/G21/" local="132090853050000000" remote="132090853050000000" Dst="0" />
 <file name="bootstrap.css" server="U:/XAMPP/htdocs/G21/" local="132063473806565135" remote="132063473800000000" Dst="0" />
+=======
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="bootstrap.css" server="lampp/htdocs/g21example/" local="3642490182" remote="3642490182" Dst="-1" />
+<file name="bootstrap.css" server="U:/XAMPP/htdocs/G21_example/" local="132041189820000000" remote="132041189820000000" Dst="0" />
+<file name="bootstrap.css" server="F:/xampp/htdocs/G21/" local="132063473806565135" remote="132063473800000000" Dst="0" />
+<file name="bootstrap.css" server="F:/School/2019/Digital Solutions/Unit 2/G21/" local="132063473806565135" remote="132063473800000000" Dst="0" />
+<file name="bootstrap.css" server="F:/xampp/htdocs/G21/G21/" local="132063473806565135" remote="132063473800000000" Dst="0" />
+<file name="bootstrap.css" server="U:/xampp/htdocs/G21/" local="132090853050000000" remote="132090853050000000" Dst="0" />
+<file name="bootstrap.css" server="F:/xampp/htdocs/Testing/G21/" local="132063473806565135" remote="132063473800000000" Dst="0" />
+<file name="bootstrap.css" server="U:/XAMPP/htdocs/G21/" local="132063473806565135" remote="132063473800000000" Dst="0" />
+>>>>>>> origin/master
 </dwsync>
