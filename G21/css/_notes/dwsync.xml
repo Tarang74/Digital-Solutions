@@ -1,14 +1,13 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="style.css" server="F:/xampp/htdocs/G21/" local="132085821411992281" remote="132085821410000000" Dst="0" />
 <file name="style.css" server="U:/XAMPP/htdocs/G21" local="132081873827360744" remote="132081873820000000" Dst="0" />
 <file name="style.css" server="U:/XAMPP/htdocs/G21/" local="132088474748143733" remote="132088474740000000" Dst="0" />
 <file name="style.css" server="U:/xampp/htdocs/G21/" local="132088474748143733" remote="132088474740000000" Dst="0" />
-<file name="style.css" server="F:/xampp/htdocs/Testing/G21/" local="132088474748143733" remote="132088474740000000" Dst="0" />
-<file name="header.css" server="F:/xampp/htdocs/Testing/G21/" local="132088473527765459" remote="132088473520000000" Dst="0" />
+<file name="style.css" server="F:/xampp/htdocs/Testing/G21/" local="132088474740000000" remote="132088474740000000" Dst="0" />
+<file name="header.css" server="F:/xampp/htdocs/Testing/G21/" local="132088473520000000" remote="132088473520000000" Dst="0" />
 <file name="footer.css" server="F:/xampp/htdocs/Testing/G21/" local="132088474299508673" remote="132088474290000000" Dst="0" />
-<file name="form.css" server="F:/xampp/htdocs/Testing/G21/" local="132091867784104980" remote="132091867780000000" Dst="0" />
+<file name="form.css" server="F:/xampp/htdocs/Testing/G21/" local="132091867780000000" remote="132091867780000000" Dst="0" />
 <file name="body.css" server="F:/xampp/htdocs/Testing/G21/" local="132088474650548901" remote="132088474650000000" Dst="0" />
 <file name="body.css" server="U:/XAMPP/htdocs/G21/" local="132088474650548901" remote="132088474650000000" Dst="0" />
 <file name="footer.css" server="U:/XAMPP/htdocs/G21/" local="132088474299508673" remote="132088474290000000" Dst="0" />
@@ -21,27 +20,4 @@
 <file name="header3.css" server="U:/xampp/htdocs/G21/" local="132090048423765430" remote="132090048420000000" Dst="0" />
 <file name="header3.css" server="U:/XAMPP/htdocs/G21/" local="132090048423765430" remote="132090048420000000" Dst="0" />
 <file name="header3.css" server="F:/xampp/htdocs/Testing/G21/" local="132090048423765430" remote="132090048420000000" Dst="0" />
-=======
-<?xml version="1.0" encoding="utf-8" ?>
-<dwsync>
-<file name="style.css" server="F:/xampp/htdocs/G21/" local="132085821411992281" remote="132085821410000000" Dst="0" />
-<file name="style.css" server="U:/XAMPP/htdocs/G21" local="132081873827360744" remote="132081873820000000" Dst="0" />
-<file name="style.css" server="U:/XAMPP/htdocs/G21/" local="132088474748143733" remote="132088474740000000" Dst="0" />
-<file name="style.css" server="U:/xampp/htdocs/G21/" local="132088474748143733" remote="132088474740000000" Dst="0" />
-<file name="style.css" server="F:/xampp/htdocs/Testing/G21/" local="132088474748143733" remote="132088474740000000" Dst="0" />
-<file name="header.css" server="F:/xampp/htdocs/Testing/G21/" local="132088473527765459" remote="132088473520000000" Dst="0" />
-<file name="footer.css" server="F:/xampp/htdocs/Testing/G21/" local="132088474299508673" remote="132088474290000000" Dst="0" />
-<file name="form.css" server="F:/xampp/htdocs/Testing/G21/" local="132088472789338192" remote="132088472780000000" Dst="0" />
-<file name="body.css" server="F:/xampp/htdocs/Testing/G21/" local="132088474650548901" remote="132088474650000000" Dst="0" />
-<file name="body.css" server="U:/XAMPP/htdocs/G21/" local="132088474650548901" remote="132088474650000000" Dst="0" />
-<file name="footer.css" server="U:/XAMPP/htdocs/G21/" local="132088474299508673" remote="132088474290000000" Dst="0" />
-<file name="form.css" server="U:/XAMPP/htdocs/G21/" local="132091867784104980" remote="132091867780000000" Dst="0" />
-<file name="header.css" server="U:/XAMPP/htdocs/G21/" local="132088473527765459" remote="132088473520000000" Dst="0" />
-<file name="body.css" server="U:/xampp/htdocs/G21/" local="132088474650548901" remote="132088474650000000" Dst="0" />
-<file name="footer.css" server="U:/xampp/htdocs/G21/" local="132088474299508673" remote="132088474290000000" Dst="0" />
-<file name="form.css" server="U:/xampp/htdocs/G21/" local="132091867784104980" remote="132091867780000000" Dst="0" />
-<file name="header.css" server="U:/xampp/htdocs/G21/" local="132088473527765459" remote="132088473520000000" Dst="0" />
-<file name="header3.css" server="U:/xampp/htdocs/G21/" local="132090048423765430" remote="132090048420000000" Dst="0" />
-<file name="header3.css" server="U:/XAMPP/htdocs/G21/" local="132090048423765430" remote="132090048420000000" Dst="0" />
->>>>>>> origin/master
 </dwsync>
