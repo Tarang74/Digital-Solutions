@@ -8,13 +8,20 @@
 </head>
 
 <body>
-	<?php require("header.php"); ?>
+	
+
+	
+	<?php require("login.php"); ?>
 	
 	<?php 
 		if(isset($_SESSION['userID'])) {
-			echo '<p>You are logged in</p>';
-		} else {
-			echo '<p>You are logged out</p>';
+			if(isset($_SESSION['student'])) {
+				header("Location: student/student.php");
+			} elseif(isset($_SESSION['mentor'])) {
+				header("Location: mentor/mentor.php");
+			} elseif(isset($_SESSION['teacher'])) {
+				header("Location: teacher/teacher.php");
+			}
 		}
 	?>
 	

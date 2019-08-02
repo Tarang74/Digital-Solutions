@@ -36,9 +36,14 @@ if(isset($_POST['login-submit'])) {
 				} elseif($passwordCheck == true) {
 					session_start();
 					$_SESSION['userID'] = $row['userID'];
-					$_SESSION['username'] = $row['user_username'];
+					$_SESSION['firstname'] = $row['firstName'];
+					$_SESSION['lastname'] = $row['lastName'];
 					
-					header ("Location: ../index.php?login=success");
+<?php /*?>					if($row['userRole'] == "$_SESSION['student']") {
+						header
+					}<?php */?>
+					
+					header ("Location: ../welcome.php");
 					exit();
 				} else {
 					header ("Location: ../index.php?error=wrongpassword");

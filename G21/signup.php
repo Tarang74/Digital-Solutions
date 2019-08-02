@@ -95,6 +95,17 @@
 					?>
 				</span>
 				
+				<input type="text" name="userRole" class="alpha-only" placeholder="User Role">
+				<span class="help-block">
+					<?php 
+					if(isset($_GET['errors'])) {
+						if($_GET['errors'] == "&ur") {
+							echo "Enter user role";
+						}
+					}
+					?>
+				</span>
+				
 				<button type="submit" name="signup-submit">Signup</button>
 			</form>
 		</section>

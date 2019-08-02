@@ -1,0 +1,72 @@
+.header {
+	position: relative;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	text-transform: uppercase;
+	font-size: 20px;
+	color: white;
+	background-color: rgba(73,73,73,0.40);
+	text-align: center;
+	-webkit-transition: all 0.75s ease-in-out;
+	-moz-transition: all 0.75s ease-in-out;
+	transition: all 0.75s ease-in-out;
+	padding: 20px 0;
+}
+.header_shrink {
+	font-size: 20px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.75);
+	padding: 20px 0;
+}
+/* Header Sections */
+
+/* Main */
+
+.headernav {
+	width: 95%;
+	position: relative;
+	display: inline-flex;
+	z-index: 6;
+}
+.headernav section {
+	width: 50%;
+	vertical-align: middle;
+	text-align: center;
+	justify-content: center;
+	top: 50%;
+}
+.headernav_shrink {
+	padding: 0;
+}
+/* Left */
+
+.headerleft {
+	float: left;
+	position: relative;
+	text-align: right;
+	width: 35%;
+}
+.headerleft ul {
+	position: relative;
+	float: left;
+	padding: 0;
+	margin: auto 0;
+}
+.headerleft li {
+	text-align: right;
+	display: inline-block;
+	position: relative;
+	padding: 0 0 0 15px;
+}
+.logoContainer {
+	height:inherit;
+}
+/* Right */
+
+.headerright {
+	float: right;
+	position: relative;
+	text-align: left;
+	width: 35%;
+}

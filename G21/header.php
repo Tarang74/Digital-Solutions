@@ -34,11 +34,7 @@
 			</section>
 		</nav>
 	</header>
-	<main>
-		<div>
-			<?php require("login.php"); ?>
-		</div>
-	</main>
+
 	<script>
 		$(function() {
 			$(document).ready(function() {
