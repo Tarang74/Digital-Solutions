@@ -1,22 +1,5 @@
-<<<<<<< HEAD
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-</head>
+<?php
+session_start();
+echo 'hello student';
 
-<body>
-</body>
-=======
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-</head>
-
-<body>
-</body>
->>>>>>> origin/master
-</html>
+echo '<a> All userID ='.$_SESSION['userID'].'name is '.$_SESSION['firstname'].' last name is '.$_SESSION['lastname'].'</a>';

@@ -40,7 +40,7 @@ if(isset($_POST['login-submit'])) {
 					$_SESSION['lastname'] = $row['lastName'];
 					
    				if($row['userRole'] == "student") {
-						$_SESSION['userRole'] = "student";
+						$_SESSION['student'] = "student";
 						header("Location: ../welcome.php?userID=".$row['userID']);
 					} elseif($row['userRole'] == "mentor") {
 						$_SESSION['userRole'] = "mentor";
