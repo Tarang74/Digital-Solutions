@@ -93,6 +93,7 @@ li {
 .login-panel {
 	color: #fff;
 	text-align: center;
+	overflow: hidden;
 }
 
 form {
@@ -176,13 +177,13 @@ input::placeholder {
 
 input[type="submit"] {
 	background: none !important;
-	background-color: #0091ea !important;
-	color: #fff;
+	background-color: hsla(200,100%,50%,1.00) !important;
+	color: rgba(235,235,235,0.90);
+	transition: background-color 0.5s ease-out;
 	text-shadow: none;
 	cursor: pointer;
 	font-family: "Open Sans", arial, sans-serif;
 	border-radius: 5px;
-	border: none;
 	padding-left: auto;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -190,7 +191,40 @@ input[type="submit"] {
 	width: 100%;
 	display: block;
 	margin: auto;
+	transform: perspective(0px) translateZ(1);
+	overflow: hidden;
+	position: relative;
 }
+
+input[type="submit"]:hover {
+	background-color: hsla(200,100%,45%,1.00) !important;
+	color: #FFFFFF;
+}
+
+li.clearfix:nth-of-type(3) {
+	border-radius: 5px;
+	overflow: hidden;
+	background: rgba(0,0,0,0);
+}
+
+/*.hover:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: white;
+	height: 5px;
+	z-index: 1;
+	transform: translateY(5px);
+	transition-property: transform;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in-out;
+}
+
+.hover:hover:before, .hover:focus:before, .hover:active:before {
+	transform: translateY(0px);
+}*/
 
 input, button, select {
 	font-weight: inherit;
@@ -198,12 +232,48 @@ input, button, select {
 	font-family: inherit;
 	vertical-align: middle;
 }
-@media screen and (max-width : 60em){
-	input {
-		font-size: 15px;
+
+@media (max-width : 550px ){
+	.login-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.login-panel {
+    width: 20em;
 	}
 }
-@media screen and (min-width: 64em) {
+
+@media (min-width : 550px ) and ( max-width : 768px ){
+	.login-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.login-panel {
+    width: 35em;
+	}
+	
+	input {
+		font-size: 25px;
+	}
+}
+
+@media (min-width : 768px) and (max-width : 1024px){
+	.login-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.login-panel {
+    width: 30em;
+	}
+}
+
+@media (min-width : 1024px) and (max-width: 1440px) {
 	.login-container {
 		display: flex;
 		flex-direction: column;
@@ -212,5 +282,18 @@ input, button, select {
 	}
 	.login-panel {
     width: 25em;
+	}
+}
+
+@media (min-width : 1440px) {
+	.login-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.login-panel {
+    width: 35em;
 	}
 }

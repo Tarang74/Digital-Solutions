@@ -19,7 +19,7 @@
 							<label for="password">Password</label>
 							<input autocomplete="off" name="password" placeholder="password" type="password">
 						</li>
-            <li class="clearfix">
+            <li class="clearfix hover">
 							<input class="button expand" id="entry-login" name="login-submit" type="submit" value="Sign In">
 						</li>
           </ul>
