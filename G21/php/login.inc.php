@@ -39,17 +39,17 @@ if(isset($_POST['login-submit'])) {
 					$_SESSION['firstname'] = $row['firstName'];
 					$_SESSION['lastname'] = $row['lastName'];
 					
-   				if($row['userRole'] == "student") {
+   					if($row['userRole'] == "student") {
 						$_SESSION['student'] = "student";
 						header("Location: ../welcome.php?userID=".$row['userID']);
 					} elseif($row['userRole'] == "mentor") {
-						$_SESSION['userRole'] = "mentor";
+						$_SESSION['mentor'] = "mentor";
 						header("Location: ../welcome.php?userID=".$row['userID']);
 					} elseif($row['userRole'] == "teacher") {
-						$_SESSION['userRole'] = "teacher";
+						$_SESSION['teacher'] = "teacher";
 						header("Location: ../welcome.php?userID=".$row['userID']);
 					} elseif($row['userRole'] == "admin") {
-						$_SESSION['userRole'] = "admin";
+						$_SESSION['admin'] = "admin";
 						header("Location: ../welcome.php?userID=".$row['userID']);
 					}
 					
@@ -60,7 +60,7 @@ if(isset($_POST['login-submit'])) {
 					exit();
 				}
 			} else {
-				header ("Location: ../index.php?error=nouser2");
+				header ("Location: ../index.php?error=nouser");
 				exit();
 			}
 		}	

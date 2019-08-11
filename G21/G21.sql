@@ -1,6 +1,7 @@
 CREATE TABLE userTable (
 	userID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	userRole enum('admin','teacher','mentor','student') NOT NULL DEFAULT 'student',
+	houseID enum('1','2','3','4') NOT NULL,
 	firstName varchar(100) NOT NULL,
 	lastName varchar(100) NOT NULL,
 	gender enum('Male','Female') NOT NULL,
@@ -8,52 +9,51 @@ CREATE TABLE userTable (
 	emailAddress varchar(100) NOT NULL,
 	user_username varchar(100),
 	user_password varchar(100) NOT NULL,
-	userTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	verified boolean DEFAULT false
+	userTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-
-INSERT INTO userTable (userID, userRole, user_username, user_password, verified) VALUES
-(1,'admin','admin','adminpass',true);
 
 CREATE TABLE sessionTable (
 	sessionID int NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-	sessionTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	sessionRequestDate date NOT NULL,
 	subjectID int NOT NULL,
 	studentID int NOT NULL,
 	mentorID int,
-	teacherID int
+	teacherID int,
+	sessionComment text,
+	finished boolean NOT NULL DEFAULT FALSE,
+	sessionTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-	
+
 CREATE TABLE subjectTable (
 	subjectID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	subjectName varchar(100) NOT NULL UNIQUE,
 	subjectDescription varchar(100) NOT NULL
 );
 
+CREATE TABLE houseTable (
+	houseID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	houseName varchar(100) NOT NULL UNIQUE
+);
+
+INSERT INTO houseTable (houseName) VALUES
+('Asher'),
+('Ephraim'),
+('Judah'),
+('Levi');
+
 CREATE TABLE teacherTable (
 	teacherID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	userID int NOT NULL,
-	firstName varchar(100) NOT NULL,
-	lastName varchar(100) NOT NULL,
-	emailAddress varchar(100) NOT NULL
+	userID int NOT NULL
 );
 
 CREATE TABLE mentorTable (
 	mentorID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	userID int NOT NULL,
-	firstName varchar(100) NOT NULL,
-	lastName varchar(100) NOT NULL,
-	yearLevel int NOT NULL,
-	emailAddress varchar(100) NOT NULL
+	userID int NOT NULL
 );
 
 CREATE TABLE studentTable (
 	studentID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	userID int NOT NULL,
-	firstName varchar(100) NOT NULL,
-	lastName varchar(100) NOT NULL,
-	yearLevel int NOT NULL,
-	emailAddress varchar(100) NOT NULL
+	userID int NOT NULL
 );
 
 CREATE TABLE teacherSubjectTable (
@@ -75,11 +75,11 @@ CREATE TABLE feedbackTable (
 	feedbackID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	sessionID int NOT NULL,
 	feedbackTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	feedbackText varchar(100) NOT NULL
+	feedbackText TEXT NOT NULL
 );
 
 ALTER TABLE userTable
-  MODIFY userID int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  ADD CONSTRAINT userTable_fk_1 FOREIGN KEY (houseID) REFERENCES houseTable (houseID);
 
 ALTER TABLE sessionTable
 	ADD CONSTRAINT sessionTable_fk_1 FOREIGN KEY (subjectID) REFERENCES subjectTable (subjectID),

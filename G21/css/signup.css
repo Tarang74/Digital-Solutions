@@ -82,47 +82,12 @@ li {
 	display: block;
 }
 
-header {
-	top: 0;
-	right: 0;
-	left: 0;
-	height: 100px;
-	position: fixed;
-	padding: 0 10em;
-	background-color: white;
-}
-
-nav {
+.help-block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #FF1519;
 	position: relative;
-	background-color: pink;
-	height: 100px;
-	padding-left: auto;
-	vertical-align: middle;
-}
-
-nav ul {
-	position: absolute;
-	display: inline-flex !important;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, 50%)
-}
-
-nav li {
-	display: inline-flex !important;
-	margin: 0 1em;
-	background-color: rgba(166,29,31,0.38);
-	padding: 10px 5px;
-}
-
-/* LEFT NAV */
-.leftnav {
-	float: left;
-}
-
-/* RIGHT NAV */
-.rightnav {
-	float: right;	
 }
 
 .login-container {
