@@ -1,3 +1,9 @@
+<?php session_start() ?>
+<?php if(!isset($_SESSION['userID'])) {
+	header("Location: ../index.php?error=timeout");
+	exit();
+}
+?>
 <!doctype html>
 <html>
 <head>

@@ -7,7 +7,7 @@ CREATE TABLE userTable (
 	gender enum('Male','Female') NOT NULL,
 	yearLevel int,
 	emailAddress varchar(100) NOT NULL,
-	user_username varchar(100),
+	user_username varchar(100), 
 	user_password varchar(100) NOT NULL,
 	userTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -18,8 +18,9 @@ CREATE TABLE sessionTable (
 	subjectID int NOT NULL,
 	studentID int NOT NULL,
 	mentorID int,
-	teacherID int,
 	sessionComment text,
+	available boolean NOT NULL,
+	cancelled boolean NOT NULL,
 	finished boolean NOT NULL DEFAULT FALSE,
 	sessionTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

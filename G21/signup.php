@@ -7,98 +7,123 @@
 </head>
 	
 	<body class="login-page">
-		<main>
-			<div class="login">
-				<section>
-					<h1>Sign Up</h1>
-					<form action="php/signup.inc.php" method="post" class="login-form">
-						<input type="text" name="firstName" class="alpha-only" placeholder="First name">
-						<span class="help-block">
-							<?php 
-								if(isset($_GET['empty']) && $_GET['empty'] = 'fn') {
-									echo "Enter first name";
-								}
-							?>
-						</span>
+		<div class="login-container">
+			<div class="login-panel">
+				<h1>Sign Up</h1>
+				<form action="php/signup.inc.php" name="signup-form" method="post" class="signup-form" id="signup-form">
+					<div id="loginFormFields">
+						<ul>
+							<li class="clearfix">
+								<label for="userRole">User Role</label>
+								<select name="userRole" id="userRole" required>
+									<option hidden disabled selected value>Role</option>
+									<option value="Student">Student</option>
+									<option value="Mentor">Mentor</option>
+									<option value="Teacher">Teacher</option>
+								</select>
+															
+								<span class="help-block">
+									<p id="ur_e"></p>
+								</span>
+							</li>
+							
+							<li class="clearfix">
+								<label for="firstName">First name</label>
+								<input type="text" name="firstName" class="alpha-only" placeholder="First name" id="firstname" required>
+								<span class="help-block">
+									<p id="fn_e"></p>
+								</span>
+							</li>
+							
+							<li class="clearfix">
+								<label for="lastName">Last name</label>
+								<input type="text" name="lastName" class="alpha-only" placeholder="Last name" id="lastname" required>
+								<span class="help-block">
+									<p id="ln_e"></p>
+								</span>
+							</li>
+							
+							<li class="clearfix">
+								<label for="gender">Gender</label>
+								<select name="gender" id="gender" required>
+									<option hidden disabled selected value>Gender</option>
+									<option value="Male">Male</option>
+									<option value="Female">Female</option>
+								</select>
+								<span class="help-block">
+									<p id="g_e"></p>
+								</span>
+							</li>
+							
+							<li class="clearfix">
+								<label for="yearLevel">Year Level</label>
+								<input type="number" min="7" max="12" step="1" name="yearLevel" placeholder="Year Level" id="yearlevel">
+								<span class="help-block">
+									<p id="yl_e"></p>
+								</span>
+							</li>
+							
+							<li class="clearfix">
+								<label for="house">House</label>
+								<select name="house" id="house">
+									<option hidden disabled selected value>House</option>
+										<option hidden disabled selected value>Select House</option>
+										<?php
+										require("php/session.php");
 
-						<input type="text" name="lastName" class="alpha-only" placeholder="Last name">
-						<span class="help-block">
-							<?php 
-								if(isset($_GET['empty']) && $_GET['empty'] = 'ln') {
-									echo "Enter last name";
-								}
-							?>
-						</span>
+										$sql = "SELECT * FROM houseTable";
+										$result = mysqli_query($connection, $sql);
 
-						<select name="gender">
-							<option hidden disabled selected value>Gender</option>
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
-						</select>
-						<span class="help-block">
-							<?php 
-								if(isset($_GET['empty']) && $_GET['empty'] = 'g') {
-									echo "Please select your gender";
-								}
-							?>
-						</span>
+										if (mysqli_num_rows($result) > 0) {
+											while($row = mysqli_fetch_assoc($result)) {
+												echo "<option value='" . $row['houseID'] . "'>" . $row['houseName'] . "</option>";
+											}
+										}
 
-						<input type="number" min="7" max="12" step="1" name="yearLevel" placeholder="Year Level">
-						<span class="help-block">
-							<?php 
-								if(isset($_GET['empty']) && $_GET['empty'] = 'yl') {
-									echo "Please select year level";
-								}
-							?>
-						</span>
-
-						<input type="text" name="username" placeholder="Username">
-						<span class="help-block">
-							<?php 
-								if(isset($_GET['empty']) && $_GET['empty'] = 'u') {
-									echo "Enter username";
-								} elseif(isset($_GET['invalid']) && $_GET['invalid'] = 'u') {
-									echo "That username is taken. Try logging in, or use another username.";
-								}
-							?>
-						</span>
-
-						<input type="password" name="password" placeholder="Password">
-						<span class="help-block">
-							<?php 
-								if(isset($_GET['empty']) && $_GET['empty'] = 'p') {
-									echo "Enter a password";
-								} elseif(isset($_GET['invalid']) && $_GET['invalid'] = 'p') {
-									echo "Use 6 or more characters for your password";
-								}
-							?>
-						</span>
-
-						<input type="password" name="passwordConfirm" placeholder="Confirm">
-						<span class="help-block">
-							<?php 
-								if(isset($_GET['empty']) && $_GET['empty'] = 'pc') {
-									echo "Confirm your password";
-								} elseif(isset($_GET['invalid']) && $_GET['invalid'] = 'pc') {
-									echo "The passwords do not match. Try again.";
-								}
-							?>
-						</span>
-
-						<input type="text" name="userRole" class="alpha-only" placeholder="User Role">
-						<span class="help-block">
-							<?php 
-								if(isset($_GET['empty']) && $_GET['empty'] = 'ur') {
-									echo "Enter user role";
-								}
-							?>
-						</span>
-
-						<button type="submit" name="signup-submit">Signup</button>
-					</form>
-				</section>
+										mysqli_close($connection);
+										?>
+									
+								</select>
+								<span class="help-block">
+									<p id="g_e"></p>
+								</span>
+							</li>
+							
+							<li class="clearfix">
+								<label for="username">Username</label>
+								<input type="text" name="username" placeholder="Username" id="username" required>
+								<span class="help-block">
+									<p id="u_e"> </p>
+								</span>
+							</li>
+							
+							<li class="clearfix">
+								<label for="password">Password</label>
+								<input type="password" name="password" placeholder="Password" id="password" required>
+								<span class="help-block">
+									<p id="p_e"> </p>
+								</span>
+							</li>
+							
+							<li class="clearfix">
+								<label for="passwordConfirm">Confirm</label>
+								<input type="password" name="passwordConfirm" placeholder="Confirm" id="passwordconfirm" required>
+								<span class="help-block">
+									<p id="pc_e"> </p>
+								</span>
+							</li>
+							
+							<li class="clearfix">
+								<input type="submit" name="signup-submit" id="signup-submit-button" value="Sign Up">
+							</li>
+							
+						</ul>
+					</div>
+				</form>
 			</div>
-		</main>
-		<script src="js/alpha-only.js"></script>
+		</div>
 	</body>
+
+<script src="js/alpha-only.js"></script>
+
 </html>

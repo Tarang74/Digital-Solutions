@@ -10,7 +10,7 @@
       <h1>CITIPOINTE G21</h1>
       <form action="php/login.inc.php" class="login-form" method="post" name="login" id="login">
         <div id="loginFormFields">
-          <ul id="loginFormList">
+          <ul>
             <li class="clearfix">
 							<label for="mailuid">Username</label>
 							<input maxlength="50" name="mailuid" placeholder="username" type="text">
