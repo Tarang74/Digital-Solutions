@@ -35,26 +35,23 @@ if(isset($_POST['login-submit'])) {
 					exit();
 				} elseif($passwordCheck == true) {
 					session_start();
+					
 					$_SESSION['userID'] = $row['userID'];
 					$_SESSION['firstname'] = $row['firstName'];
 					$_SESSION['lastname'] = $row['lastName'];
 					
-   					if($row['userRole'] == "student") {
+   					if($row['userRole'] == "Student") {
 						$_SESSION['student'] = "student";
-						header("Location: ../welcome.php?userID=".$row['userID']);
-					} elseif($row['userRole'] == "mentor") {
-						$_SESSION['mentor'] = "mentor";
-						header("Location: ../welcome.php?userID=".$row['userID']);
-					} elseif($row['userRole'] == "teacher") {
-						$_SESSION['teacher'] = "teacher";
-						header("Location: ../welcome.php?userID=".$row['userID']);
-					} elseif($row['userRole'] == "admin") {
-						$_SESSION['admin'] = "admin";
-						header("Location: ../welcome.php?userID=".$row['userID']);
+						header("Location: ../student/student.php?userID=".$row['userID']);
 					}
-					
-					header ("Location: ../welcome.php");
-					exit();
+					elseif($row['userRole'] == "Mentor") {
+						$_SESSION['mentor'] = "mentor";
+						header("Location: ../mentor/mentor.php?userID=".$row['userID']);
+					}
+					elseif($row['userRole'] == "Teacher") {
+						$_SESSION['teacher'] = "teacher";
+						header("Location: ../teacher/teacher.php?userID=".$row['userID']);
+					}
 				} else {
 					header ("Location: ../index.php?error=wrongpassword");
 					exit();

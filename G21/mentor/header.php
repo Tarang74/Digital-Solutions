@@ -3,12 +3,11 @@
 		header("HTTP/1.1 404 File Not Found", 404);
 		exit();
 	}
-?>
-<!doctype html>
-<html>
-
-<body>
-	<header>
+?><head>
+<link rel="stylesheet" href="../css/header.css" type="text/css">
+</head>
+	
+<header>
 	<nav>
 		<div class="leftnav">
 			<ul>
@@ -33,5 +32,3 @@
 	</nav>
 	
 	</header>
-</body>
-</html>

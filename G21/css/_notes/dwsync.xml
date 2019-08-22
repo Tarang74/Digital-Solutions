@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="header.css" server="F:/xampp/htdocs/Testing/G21/" local="132099810624355088" remote="132099810620000000" Dst="0" />
+<file name="header.css" server="F:/xampp/htdocs/Testing/G21/" local="132103380286359676" remote="132103380280000000" Dst="0" />
 <file name="footer.css" server="F:/xampp/htdocs/Testing/G21/" local="132099774386162695" remote="132099774380000000" Dst="0" />
 <file name="form.css" server="F:/xampp/htdocs/Testing/G21/" local="132091867780000000" remote="132091867780000000" Dst="0" />
 <file name="footer.css" server="U:/XAMPP/htdocs/G21/" local="132099774386162695" remote="132099774380000000" Dst="0" />
@@ -8,11 +8,19 @@
 <file name="header.css" server="U:/XAMPP/htdocs/G21/" local="132099810624355088" remote="132099810620000000" Dst="0" />
 <file name="footer.css" server="U:/xampp/htdocs/G21/" local="132099774386162695" remote="132099774380000000" Dst="0" />
 <file name="form.css" server="U:/xampp/htdocs/G21/" local="132091867780000000" remote="132091867780000000" Dst="0" />
-<file name="header.css" server="U:/xampp/htdocs/G21/" local="132099810624355088" remote="132099810620000000" Dst="0" />
-<file name="login.css" server="F:/xampp/htdocs/Testing/G21/" local="132099810861486545" remote="132099810860000000" Dst="0" />
+<file name="header.css" server="U:/xampp/htdocs/G21/" local="132103383018262475" remote="132103383010000000" Dst="0" />
+<file name="login.css" server="F:/xampp/htdocs/Testing/G21/" local="132103377841240009" remote="132103377840000000" Dst="0" />
 <file name="login.css" server="U:/XAMPP/htdocs/G21/" local="132099810861486545" remote="132099810860000000" Dst="0" />
-<file name="login.css" server="U:/xampp/htdocs/G21/" local="132099810861486545" remote="132099810860000000" Dst="0" />
+<file name="login.css" server="U:/xampp/htdocs/G21/" local="132103377841240009" remote="132103377840000000" Dst="0" />
 <file name="signup.css" server="F:/xampp/htdocs/Testing/G21/" local="132100007805967786" remote="132100007800000000" Dst="0" />
 <file name="signup.css" server="U:/xampp/htdocs/G21/" local="132100007805967786" remote="132100007800000000" Dst="0" />
 <file name="signup.css" server="U:/XAMPP/htdocs/G21/" local="132100007805967786" remote="132100007800000000" Dst="0" />
+<file name="main.css" server="F:/xampp/htdocs/Testing/G21/" local="132103380717474432" remote="132103380710000000" Dst="0" />
+<file name="footer.css" server="F:/xampp/htdocs/G21/" local="132099774386162695" remote="132099774380000000" Dst="0" />
+<file name="form.css" server="F:/xampp/htdocs/G21/" local="132091867780000000" remote="132091867780000000" Dst="0" />
+<file name="header.css" server="F:/xampp/htdocs/G21/" local="132103383018262475" remote="132103383010000000" Dst="0" />
+<file name="login.css" server="F:/xampp/htdocs/G21/" local="132103377841240009" remote="132103377840000000" Dst="0" />
+<file name="main.css" server="F:/xampp/htdocs/G21/" local="132105018289583132" remote="132105018280000000" Dst="0" />
+<file name="signup.css" server="F:/xampp/htdocs/G21/" local="132100007805967786" remote="132100007800000000" Dst="0" />
+<file name="main.css" server="U:/xampp/htdocs/G21/" local="132105018289583132" remote="132105018280000000" Dst="0" />
 </dwsync>

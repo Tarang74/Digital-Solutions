@@ -16,9 +16,7 @@
 							<li class="clearfix">
 								<label for="userRole">User Role</label>
 								<select name="userRole" id="userRole" required>
-									<option hidden disabled selected value>Role</option>
-									<option value="Student">Student</option>
-									<option value="Mentor">Mentor</option>
+									<option value="Teacher" selected>Teacher</option>
 								</select>
 															
 								<span class="help-block">
@@ -55,40 +53,6 @@
 							</li>
 							
 							<li class="clearfix">
-								<label for="yearLevel">Year Level</label>
-								<input type="number" min="7" max="12" step="1" name="yearLevel" placeholder="Year Level" id="yearlevel">
-								<span class="help-block">
-									<p id="yl_e"></p>
-								</span>
-							</li>
-							
-							<li class="clearfix">
-								<label for="house">House</label>
-								<select name="house" id="house">
-									<option hidden disabled selected value>House</option>
-										<option hidden disabled selected value>Select House</option>
-										<?php
-										require("php/session.php");
-
-										$sql = "SELECT * FROM houseTable";
-										$result = mysqli_query($connection, $sql);
-
-										if (mysqli_num_rows($result) > 0) {
-											while($row = mysqli_fetch_assoc($result)) {
-												echo "<option value='" . $row['houseID'] . "'>" . $row['houseName'] . "</option>";
-											}
-										}
-
-										mysqli_close($connection);
-										?>
-									
-								</select>
-								<span class="help-block">
-									<p id="g_e"></p>
-								</span>
-							</li>
-							
-							<li class="clearfix">
 								<label for="username">Username</label>
 								<input type="text" name="username" placeholder="Username" id="username" required>
 								<span class="help-block">
@@ -113,7 +77,7 @@
 							</li>
 							
 							<li class="clearfix">
-								<input type="submit" name="signup-submit" id="signup-submit-button" value="Sign Up">
+								<input type="submit" name="t-signup-submit" id="signup-submit-button" value="Sign Up">
 							</li>
 							
 						</ul>

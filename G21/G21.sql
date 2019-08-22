@@ -1,6 +1,6 @@
 CREATE TABLE userTable (
 	userID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	userRole enum('admin','teacher','mentor','student') NOT NULL DEFAULT 'student',
+	userRole varchar(100) NOT NULL,
 	houseID enum('1','2','3','4') NOT NULL,
 	firstName varchar(100) NOT NULL,
 	lastName varchar(100) NOT NULL,
@@ -21,15 +21,19 @@ CREATE TABLE sessionTable (
 	sessionComment text,
 	available boolean NOT NULL,
 	cancelled boolean NOT NULL,
-	finished boolean NOT NULL DEFAULT FALSE,
+	completed boolean NOT NULL DEFAULT FALSE,
 	sessionTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE subjectTable (
 	subjectID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	subjectName varchar(100) NOT NULL UNIQUE,
-	subjectDescription varchar(100) NOT NULL
+	subjectName varchar(100) NOT NULL UNIQUE
 );
+
+INSERT INTO subjectTable (subjectName) VALUES
+('English'),
+('Mathematics'),
+('Science');
 
 CREATE TABLE houseTable (
 	houseID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -76,7 +80,7 @@ CREATE TABLE feedbackTable (
 	feedbackID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	sessionID int NOT NULL,
 	feedbackTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	feedbackText TEXT NOT NULL
+	feedbackComment TEXT NOT NULL
 );
 
 ALTER TABLE userTable

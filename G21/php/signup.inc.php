@@ -23,7 +23,7 @@ if(isset($_POST['signup-submit'])) {
 	if(!empty($_POST['gender'])) {
 		$gender = $_POST['gender'];
 	} else {
-		$g_e = "&empty3=g";
+		$g_e = "&empty=g";
 	}
 	
 	if(!empty($_POST['yearLevel'])) {
@@ -115,7 +115,7 @@ if(isset($_POST['signup-submit'])) {
 			
 			$string = "INSERT INTO " . $userRole . "Table (userID) SELECT MAX(userID) AS userID FROM userTable";
 			$sql1 = $string;
-			mysqli_query($connection, $sql1);	
+			mysqli_query($connection, $sql1);
 		}
 
 		mysqli_close($connection);
@@ -123,14 +123,9 @@ if(isset($_POST['signup-submit'])) {
 		header("Location: ../index.php?signup=success");
 		exit();
 	}
-} else {
-	header("HTTP/1.1 404 File Not Found", 404);
-	exit();
-}
+} 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-if(isset($_POST['signup-teacher-submit'])) {
+if(isset($_POST['t-signup-submit'])) {
 	
 	require 'session.php';
 	
@@ -153,7 +148,7 @@ if(isset($_POST['signup-teacher-submit'])) {
 	if(!empty($_POST['gender'])) {
 		$gender = $_POST['gender'];
 	} else {
-		$g_e = "&empty3=g";
+		$g_e = "&empty=g";
 	}
 
 	if(!empty($_POST['username'])) {
@@ -173,7 +168,7 @@ if(isset($_POST['signup-teacher-submit'])) {
 				$u_i = "&invalid=u";
 			}
 		} else {
-			header("Location: ../signup.php?error=sqlerror");
+			header("Location: ../t-signup.php?error=sqlerror");
 			exit();
 		}
 	} else {
@@ -213,7 +208,7 @@ if(isset($_POST['signup-teacher-submit'])) {
 		$message = password_hash($empty . $invalid, PASSWORD_DEFAULT);
 		
 		if(!empty($empty) || !empty($invalid)) {
-			header("Location: ../signup.php?$message");
+			header("Location: ../t-signup.php?$message");
 			exit();
 		}
 	}
