@@ -32,39 +32,42 @@
 			<?php
 			require("../php/session.php");
 
-			$string = "SELECT sessionRequestDate, subjectName, firstName, lastName, yearLevel, sessionComment, available, completed, sessionTable.sessionID, feedbackComment
+			$sql = "SELECT sessionRequestDate, subjectName, firstName, lastName, yearLevel, sessionComment, available, completed, sessionTable.sessionID, feedbackComment
 			FROM sessionTable
 			RIGHT JOIN mentorTable ON sessionTable.mentorID = mentorTable.mentorID
 			LEFT JOIN subjectTable ON sessionTable.subjectID = subjectTable.subjectID
 			LEFT JOIN studentTable ON sessionTable.studentID = studentTable.studentID
 			LEFT JOIN userTable ON studentTable.userID = userTable.userID
 			LEFT JOIN feedbackTable ON sessionTable.sessionID = feedbackTable.sessionID
-			WHERE mentorTable.userID = " . $_SESSION['userID'] .
-			"AND cancelled = 0";
-			$sql = $string;
+			WHERE mentorTable.userID = " . $_SESSION['userID'] . "AND cancelled = 0";
+			
 			$result = mysqli_query($connection, $sql);
 
-			while($row = mysqli_fetch_array($result)) {
-			echo "
-			<tr>
-			<td>" . $row['sessionRequestDate'] . "</td>
-			<td>" . $row['subjectName'] . "</td>
-			<td>" . $row['firstName'] . " " . $row['lastName'] . " - " . $row['yearLevel'] . "</td>
-			<td>" . $row['sessionComment'] . "</td>
-			<td>" . $row['available'] .
-					"<form name='available-form' action='available.php' method='post'>
-					<input style='display: none;' name='sessionID' value='" . $row['sessionID'] . "'>
-					<input type='submit' name='available-submit' value='Available'>
-					</form>" .
-			"</td>
-			<td>" . $row['completed'] . 
-					"<form name='completed-session-form' action='completed.php' method='post'>
-					<input style='display: none;' name='sessionID' value='" . $row['sessionID'] . "'>
-					<input type='submit' name='completed-session-submit' value='Complete'>
-					</form>" .
-			"</td>
-			<td>" . $row['feedbackComment'] . "</td>
-			</tr>";
+			if(mysqli_num_rows($result) > 0) {
+				while($row = mysqli_fetch_array($result)) {
+				echo "
+				<tr>
+				<td>" . $row['sessionRequestDate'] . "</td>
+				<td>" . $row['subjectName'] . "</td>
+				<td>" . $row['firstName'] . " " . $row['lastName'] . " - " . $row['yearLevel'] . "</td>
+				<td>" . $row['sessionComment'] . "</td>
+				<td>" . $row['available'] .
+						"<form name='available-form' action='available.php' method='post'>
+						<input style='display: none;' name='sessionID' value='" . $row['sessionID'] . "'>
+						<input type='submit' name='available-submit' value='Available'>
+						</form>" .
+				"</td>
+				<td>" . $row['completed'] . 
+						"<form name='completed-session-form' action='completed.php' method='post'>
+						<input style='display: none;' name='sessionID' value='" . $row['sessionID'] . "'>
+						<input type='submit' name='completed-session-submit' value='Complete'>
+						</form>" .
+				"</td>
+				<td>" . $row['feedbackComment'] . "</td>
+				</tr>";
+				} 
+			} else {
+				echo "None";
 			}
 			mysqli_close($connection);
 			?>

@@ -1,6 +1,6 @@
 CREATE TABLE userTable (
 	userID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	userRole varchar(100) NOT NULL,
+	userRole enum('student','mentor','teacher') NOT NULL,
 	houseID enum('1','2','3','4') NOT NULL,
 	firstName varchar(100) NOT NULL,
 	lastName varchar(100) NOT NULL,

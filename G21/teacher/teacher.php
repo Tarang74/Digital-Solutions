@@ -33,7 +33,7 @@
 			<?php
 			require("../php/session.php");
 
-			$string = "
+			$sql = "
 			SELECT
 				sessionID,
 				sessionRequestDate,
@@ -65,11 +65,10 @@
 				mt.userID = mu.userID
 			ORDER BY
 				sessionID ASC";
-			$sql = $string;
+
 			$result = mysqli_query($connection, $sql);
 
-			while($row = mysqli_fetch_array($result)) {
-							
+			while($row = mysqli_fetch_array($result)) {			
 			echo "
 			<tr>
 			<td>" . $row['sessionID'] . "</td>

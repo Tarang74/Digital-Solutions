@@ -188,7 +188,8 @@ if(isset($_POST['t-signup-submit'])) {
 	}
 	
 	if(!empty($_POST['userRole'])) {
-		$userRole = $_POST['userRole'];
+		$string = $_POST['userRole'];
+		$userRole = strtolower($string);
 	} else {
 		$ur_e = "&empty=ur";
 	}

@@ -39,18 +39,22 @@ if(isset($_POST['login-submit'])) {
 					$_SESSION['userID'] = $row['userID'];
 					$_SESSION['firstname'] = $row['firstName'];
 					$_SESSION['lastname'] = $row['lastName'];
-					
-   					if($row['userRole'] == "Student") {
-						$_SESSION['student'] = "student";
-						header("Location: ../student/student.php?userID=".$row['userID']);
+					echo('1 first');
+   					if($row['userRole'] == "student") {
+						$_SESSION['userRole'] = "student";
+						echo('2 second');
+						$string = "Location: ../student/student.php?userID=".$row['userID'];
+						header($string);
 					}
-					elseif($row['userRole'] == "Mentor") {
-						$_SESSION['mentor'] = "mentor";
-						header("Location: ../mentor/mentor.php?userID=".$row['userID']);
+					elseif($row['userRole'] == "mentor") {
+						$_SESSION['userRole'] = "mentor";
+						$string = "Location: ../mentor/mentor.php?userID=".$row['userID'];
+						header($string);
 					}
-					elseif($row['userRole'] == "Teacher") {
-						$_SESSION['teacher'] = "teacher";
-						header("Location: ../teacher/teacher.php?userID=".$row['userID']);
+					elseif($row['userRole'] == "teacher") {
+						$_SESSION['userRole'] = "teacher";
+						$string = "Location: ../teacher/teacher.php?userID=".$row['userID'];
+						header($string);
 					}
 				} else {
 					header ("Location: ../index.php?error=wrongpassword");
