@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['login-submit'])) {
-	
+	session_start();
 	require "session.php";
 	
 	$mailuid = $password = "";
@@ -12,8 +12,19 @@ if(isset($_POST['login-submit'])) {
 	if(!empty($_POST['password'])) {
 		$password = $_POST['password'];
 	}
+	if(empty($mailuid) && empty($password)) {
+		$_SESSION['username_e'] = "emptyusername";
+		$_SESSION['password_e'] = "emptypassword";
+		header ("Location: ../index.php?error=emptyfields");
+		exit();
+	}
 	
-	if(empty($mailuid) || empty($password)) {
+	if(empty($mailuid)) {
+		$_SESSION['username_e'] = "emptyusername";
+		header ("Location: ../index.php?error=emptyfields");
+		exit();
+	} elseif (empty($password)) {
+		$_SESSION['password_e'] = "emptypassword";
 		header ("Location: ../index.php?error=emptyfields&u=$mailuid");
 		exit();
 	} else {
@@ -31,6 +42,7 @@ if(isset($_POST['login-submit'])) {
 			if($row = mysqli_fetch_assoc($result)) {
 				$passwordCheck = password_verify($password, $row['user_password']);
 				if($passwordCheck == false) {
+					$_SESSION['password_e'] = "wrongpassword";
 					header ("Location: ../index.php?error=wrongpassword");
 					exit();
 				} elseif($passwordCheck == true) {
@@ -42,7 +54,6 @@ if(isset($_POST['login-submit'])) {
 					echo('1 first');
    					if($row['userRole'] == "student") {
 						$_SESSION['userRole'] = "student";
-						echo('2 second');
 						$string = "Location: ../student/student.php?userID=".$row['userID'];
 						header($string);
 					}
@@ -56,11 +67,9 @@ if(isset($_POST['login-submit'])) {
 						$string = "Location: ../teacher/teacher.php?userID=".$row['userID'];
 						header($string);
 					}
-				} else {
-					header ("Location: ../index.php?error=wrongpassword");
-					exit();
 				}
 			} else {
+				$_SESSION['username_e'] = "nouser";
 				header ("Location: ../index.php?error=nouser");
 				exit();
 			}

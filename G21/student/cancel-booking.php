@@ -2,12 +2,8 @@
 if(isset($_POST['cancel-booking-submit'])) {
 	require "../php/session.php";
 	
-	$sessionID = $_POST['sessionID'];
-	
-	$string = "UPDATE sessionTable
-					SET cancelled = !cancelled
-					WHERE sessionID = " . $sessionID;
-	$sql = $string;
+	$sql = "DELETE FROM sessionTable
+					WHERE sessionID = " . $_POST['sessionID'];
 	
 	mysqli_query($connection, $sql);
 	mysqli_close($connection);

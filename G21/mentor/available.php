@@ -2,12 +2,9 @@
 if(isset($_POST['available-submit'])) {
 	require "../php/session.php";
 	
-	$sessionID = $_POST['sessionID'];
-	
-	$string = "UPDATE sessionTable
+	$sql = "UPDATE sessionTable
 					SET available = !available
-					WHERE sessionID = " . $sessionID;
-	$sql = $string;
+					WHERE sessionID = " . $_POST['sessionID'];
 	
 	mysqli_query($connection, $sql);
 	mysqli_close($connection);

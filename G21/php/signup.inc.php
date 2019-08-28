@@ -1,6 +1,7 @@
 <?php
 
 if(isset($_POST['signup-submit'])) {
+	session_start();
 	
 	require 'session.php';
 	
@@ -80,6 +81,10 @@ if(isset($_POST['signup-submit'])) {
 		$h_e = "&empty=h";
 	}
 	
+	if(!empty($_POST['subject'])) {
+		$subject = $_POST['subject'];
+	}
+	
 	if($fn_e || $ln_e || $g_e || $yl_e || $u_e || $p_e || $pc_e || $ur_e || $h_e || $u_i || $p_i || $pc_i) {
 		$empty = "";
 		$invalid = "";
@@ -95,6 +100,22 @@ if(isset($_POST['signup-submit'])) {
 		$message = password_hash($empty . $invalid, PASSWORD_DEFAULT);
 		
 		if(!empty($empty) || !empty($invalid)) {
+			if($fn_e || $ln_e || $g_e || $yl_e || $u_e || $p_e || $pc_e || $ur_e || $h_e) {
+				$_SESSION['emptyfields'] = "emptyfields";
+			}
+			
+			if($u_i) {
+				$_SESSION['error'] = "username_i";
+			}
+			
+			if($p_i) {
+				$_SESSION['error1'] = "password_i";
+			}
+			
+			if($pc_i) {
+				$_SESSION['error2'] = "passwordConfirm_i";
+			}
+			
 			header("Location: ../signup.php?$message");
 			exit();
 		}
@@ -113,9 +134,24 @@ if(isset($_POST['signup-submit'])) {
 			mysqli_stmt_execute($stmt);
 			mysqli_stmt_close($stmt);
 			
-			$string = "INSERT INTO " . $userRole . "Table (userID) SELECT MAX(userID) AS userID FROM userTable";
-			$sql1 = $string;
+			$sql1 = "INSERT INTO " . $userRole . "Table (userID) SELECT MAX(userID) AS userID FROM userTable";
 			mysqli_query($connection, $sql1);
+			if($userRole == "mentor") {
+				$sql2 = 
+					"SELECT MAX(mentorID)
+					FROM mentorTable";
+				$result = mysqli_query($connection, $sql2);
+				$row = mysqli_fetch_assoc($result);
+				
+				$sql3 = "INSERT INTO mentorSubjectTable (mentorID, subjectID) VALUES (?, ?)";
+				$stmt = mysqli_stmt_init($connection);
+				
+				if(mysqli_stmt_prepare($stmt, $sql3)) {
+					mysqli_stmt_bind_param($stmt, "ii", $row['mentorID'], $subject);
+					mysqli_stmt_execute($stmt);
+					mysqli_stmt_close($stmt);
+				}
+			}
 		}
 
 		mysqli_close($connection);
@@ -209,6 +245,22 @@ if(isset($_POST['t-signup-submit'])) {
 		$message = password_hash($empty . $invalid, PASSWORD_DEFAULT);
 		
 		if(!empty($empty) || !empty($invalid)) {
+			if($fn_e || $ln_e || $g_e || $u_e || $p_e || $pc_e) {
+				$_SESSION['emptyfields'] = "emptyfields";
+			}
+			
+			if($u_i) {
+				$_SESSION['error'] = "username_i";
+			}
+			
+			if($p_i) {
+				$_SESSION['error1'] = "password_i";
+			}
+			
+			if($pc_i) {
+				$_SESSION['error2'] = "passwordConfirm_i";
+			}
+
 			header("Location: ../t-signup.php?$message");
 			exit();
 		}

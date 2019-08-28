@@ -1,13 +1,10 @@
 <?php
 if(isset($_POST['completed-session-submit'])) {
 	require "../php/session.php";
-	
-	$sessionID = $_POST['sessionID'];
-	
-	$string = "UPDATE sessionTable
+
+	$sql = "UPDATE sessionTable
 					SET completed = !completed
-					WHERE sessionID = " . $sessionID;
-	$sql = $string;
+					WHERE sessionID = " . $_POST['sessionID'];
 	
 	mysqli_query($connection, $sql);
 	mysqli_close($connection);

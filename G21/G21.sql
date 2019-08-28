@@ -1,117 +1,67 @@
-CREATE TABLE userTable (
-	userID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	userRole enum('student','mentor','teacher') NOT NULL,
-	houseID enum('1','2','3','4') NOT NULL,
-	firstName varchar(100) NOT NULL,
-	lastName varchar(100) NOT NULL,
-	gender enum('Male','Female') NOT NULL,
-	yearLevel int,
-	emailAddress varchar(100) NOT NULL,
-	user_username varchar(100), 
-	user_password varchar(100) NOT NULL,
-	userTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE houseTable (
+	houseID INT PRIMARY KEY AUTO_INCREMENT, 
+	houseName TEXT, 
 );
-
-CREATE TABLE sessionTable (
-	sessionID int NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-	sessionRequestDate date NOT NULL,
-	subjectID int NOT NULL,
-	studentID int NOT NULL,
-	mentorID int,
-	sessionComment text,
-	available boolean NOT NULL,
-	cancelled boolean NOT NULL,
-	completed boolean NOT NULL DEFAULT FALSE,
-	sessionTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+INSERT INTO houseTable (houseID, houseName) VALUES
+	(1, 'Asher'),
+	(2, 'Ephraim'),
+	(3, 'Judah'),
+	(4, 'Levi');
+	
+CREATE TABLE userTable (
+	userID INT AUTO_INCREMENT PRIMARY KEY,
+	userRole ENUM('student', 'mentor', 'teacher'),
+	houseID ENUM('1', '2', '3', '4'),
+	firstName TEXT,
+	lastName TEXT,
+	gender ENUM('Male', 'Female'),
+	yearLevel INT,
+	emailAddress TEXT,
+	user_username TEXT,
+	user_password TEXT,
+	userTS TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE subjectTable (
-	subjectID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	subjectName varchar(100) NOT NULL UNIQUE
-);
-
-INSERT INTO subjectTable (subjectName) VALUES
-('English'),
-('Mathematics'),
-('Science');
-
-CREATE TABLE houseTable (
-	houseID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	houseName varchar(100) NOT NULL UNIQUE
-);
-
-INSERT INTO houseTable (houseName) VALUES
-('Asher'),
-('Ephraim'),
-('Judah'),
-('Levi');
-
-CREATE TABLE teacherTable (
-	teacherID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	userID int NOT NULL
-);
-
-CREATE TABLE mentorTable (
-	mentorID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	userID int NOT NULL
+	subjectID INT AUTO_INCREMENT PRIMARY KEY, 
+	subjectName TEXT
 );
 
 CREATE TABLE studentTable (
-	studentID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	userID int NOT NULL
+	studentID INT AUTO_INCREMENT PRIMARY KEY,
+	userID INT
 );
 
-CREATE TABLE teacherSubjectTable (
-	teacherID int NOT NULL,
-	subjectID int NOT NULL
+CREATE TABLE mentorTable (
+	mentorID INT AUTO_INCREMENT PRIMARY KEY,
+	userID INT
+);
+
+CREATE TABLE teacherTable (
+	teacherID INT AUTO_INCREMENT PRIMARY KEY,
+	userID INT
+);
+
+CREATE TABLE sessionTable (
+	sessionID INT AUTO_INCREMENT PRIMARY KEY,
+	sessionRequestDate DATE,
+	subjectID INT,
+	studentID INT,
+	mentorID INT,
+	sessionComment TEXT,
+	available BOOL DEFAULT FALSE,
+	completed BOOL DEFAULT FALSE,
+	sessionTS TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE mentorSubjectTable (
-	mentorID int NOT NULL,
-	subjectID int NOT NULL
-);
-
-CREATE TABLE studentSubjectTable (
-	studentID int NOT NULL,
-	subjectID int NOT NULL
+	mentorID INT,
+	subjectID INT
 );
 
 CREATE TABLE feedbackTable (
-	feedbackID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	sessionID int NOT NULL,
-	feedbackTS timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	feedbackComment TEXT NOT NULL
+	feedbackID INT AUTO_INCREMENT PRIMARY KEY,
+	sessionID INT,
+	feedbackComment TEXT,
+	feedbackTS TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-ALTER TABLE userTable
-  ADD CONSTRAINT userTable_fk_1 FOREIGN KEY (houseID) REFERENCES houseTable (houseID);
-
-ALTER TABLE sessionTable
-	ADD CONSTRAINT sessionTable_fk_1 FOREIGN KEY (subjectID) REFERENCES subjectTable (subjectID),
-	ADD CONSTRAINT sessionTable_fk_2 FOREIGN KEY (studentID) REFERENCES studentTable (studentID),
-	ADD CONSTRAINT sessionTable_fk_3 FOREIGN KEY (mentorID) REFERENCES mentorTable (mentorID),
-	ADD CONSTRAINT sessionTable_fk_4 FOREIGN KEY (teacherID) REFERENCES teacherTable (teacherID);
-
-ALTER TABLE teacherTable
-	ADD CONSTRAINT teacherTable_fk_1 FOREIGN KEY (userID) REFERENCES userTable (userID);
-
-ALTER TABLE mentorTable
-	ADD CONSTRAINT mentorTable_fk_1 FOREIGN KEY (userID) REFERENCES userTable (userID);
-
-ALTER TABLE studentTable
-	ADD CONSTRAINT studentTable_fk_1 FOREIGN KEY (userID) REFERENCES userTable (userID);
-
-ALTER TABLE teacherSubjectTable
-	 ADD CONSTRAINT teacherSubjectTable_fk_1 FOREIGN KEY (teacherID) REFERENCES teacherTable (teacherID),
-	 ADD CONSTRAINT teacherSubjectTable_fk_2 FOREIGN KEY (subjectID) REFERENCES subjectTable (subjectID);
-
-ALTER TABLE mentorSubjectTable
-	ADD CONSTRAINT mentorSubjectTable_fk_1 FOREIGN KEY (mentorID) REFERENCES mentorTable (mentorID),
-	ADD CONSTRAINT mentorSubjectTable_fk_2 FOREIGN KEY (subjectID) REFERENCES subjectTable (subjectID);
-	
-ALTER TABLE studentSubjectTable
-	ADD CONSTRAINT studentSubjectTable_fk_1 FOREIGN KEY (studentID) REFERENCES studentTable (studentID),
-	ADD CONSTRAINT studentSubjectTable_fk_2 FOREIGN KEY (subjectID) REFERENCES subjectTable (subjectID);
-
-ALTER TABLE feedbackTable
-	ADD CONSTRAINT feedbackTable_fk_1 FOREIGN KEY (sessionID) REFERENCES sessionTable (sessionID);
